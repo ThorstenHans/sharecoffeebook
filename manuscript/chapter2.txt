@@ -1,9 +1,37 @@
 # ShareCoffee
 
+Before actually digging into the framework itself, some background and common information about ShareCoffee itself.
+
 ## License
 
+ShareCoffee is licensed under MIT which means you can use ShareCoffee in your personal projects. For professional developers or companies this is also perfect because they can easily use ShareCoffee to get customer projects done or build new products powered by ShareCoffee, without having the fear to violate any license terms.
+
 ## Background
+
+Back in 2012 I was able to get my fingers on SharePoint 2013 beta and it's new APIs. The new App Model which is part of the platform allows almost every developer to build Apps which integrate with SharePoint 2013 or SharePoint Online (which is part of Office 365).
+From this point in time, I moved my focus away from server-side SharePoint development in direction App Development. Finally I was able to use common web technologies, latest frameworks and all the most recent programming languages to build extensions for SharePoint. So I created one App after another and
+during my SharePoint App journey I stumbled upon different aspects from the App Model that drove me crazy.
+
+For example let's review data access technologies in SharePoint Apps. Depending on where your code is running (SharePoint Hosted or Provider Hosted) you've to use different configurations for your REST queries in order to get them working. In addition to that it's also important to know early in development lifecycle
+where the data will be persisted (AppWeb or HostWeb) because this will also bring impacts to the way you're configuring your REST requests.
+
+Let's consider the following scenario: As a developer you're responsible for building a Task-Management-App based on SharePoint's new App Model. In the beginning you're designing your App to store all it's data within the AppWeb. After a few iterations, the product-owner reaches out and asks to provide built-in SharePoint features
+to all the users of your App. After reviewing this request you may realize that lists on the AppWeb are a little *limited* compared to lists on the HostWeb. So you make the decision to move the TaskList from the AppWeb to the HostWeb. When doing so, you've to alter all the existing REST requests which are responsible for
+reading, creating, updating and deleting tasks within your App.
+
+This is only a single scenario, but it's already pointing out some of the pain points you'll notice when building SharePoint Apps.
+
+ShareCoffee was build to solve exactly these kinds of issues. In bottom line, I built ShareCoffee to
+
+ * have a unified API for all requests
+ * reduce the amount of code developers have to write
+ * provide a fluent API which is easy to remember
+ * integrate in most popular frameworks
+ * get rid of unnecessary dependencies
 
 ## Features
 
 ## Bugs / Feature Requests
+
+As mentioned earlier, ShareCoffee is hosted on github. When it comes to collaboration based on development projects, github is awesome. That's the reason why I've decided to use github not only for hosting the code. Also all the feature requests, bugs, questions from other developers where housed within ShareCoffee's repository. If you have any kind of question / bug / feature request for ShareCoffee
+visit the repository and use github issues to collaborate with me or with other ShareCoffee users out there.
