@@ -1,2 +1,2 @@
-# Chapter 1
+# SharePoint Apps Introduction
 Hello, world!
