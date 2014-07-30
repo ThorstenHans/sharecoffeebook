@@ -1,5 +1,19 @@
 #  Building SharePoint Hosted Apps with ShareCoffee
 
+SharePoint Hosted Apps are the easiest option when building SharePoint Apps. SharePoint (the platform itself) is responsible for hosting and isolating your App. This great functionality comes of course with some limitations. In SharePoint Hosted Apps, you're limited to client-side technologies. In bottom line you can use
+
+ * HTML5
+ * CSS3
+ * JavaScript
+
+JavaScript can be replaced in the list above by languages compiling into JavaScript such as [TypeScript](http://www.typescriptlang.org/) or [CoffeeScript](http://coffeescript.org/). Both of these languages are offering great advantages compared to plain old JavaScript and I definitely suggest you to review both languages and use one of them instead of writing plain old JavaScript manually.
+
+Both languages are compiling into the *Good Parts of JavaScript* and again, these languages will make you even more productive and you can save more and more time.
+
+## Create a SharePoint Hosted App Project
+
+
+
 ## Accessing data from the AppWeb
 
 ## Accessing data from the HostWeb

@@ -29,7 +29,8 @@ First let's asume that *NodeJS* and *npm* (Node Package Manager) are installed o
     sudo npm install bower -g
 
 
-
 ## Hello ShareCoffee
+
+
 
 ## ShareCoffee.Commons
