@@ -1,1 +1,7 @@
 # ShareCoffee AddOns
+
+## ShareCoffee.Search
+
+## ShareCoffee.UserProfiles
+
+## Build your own

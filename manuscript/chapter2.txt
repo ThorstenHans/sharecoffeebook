@@ -1,1 +1,9 @@
 # ShareCoffee
+
+## License
+
+## Background
+
+## Features
+
+## Bugs / Feature Requests
