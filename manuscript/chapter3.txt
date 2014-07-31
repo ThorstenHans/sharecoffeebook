@@ -107,6 +107,10 @@ As the same for `getAppWebUrl()` you can inject either a string or a custom func
 
 `getFormDigest()` is one of the important helper methods when working with REST operations. Because SharePoint is doing request validations for all requests that create, update or delete data from SharePoint, a Form Digest value has to be passed to each of the REST requests.
 
+var formDigestValue = ShareCoffee.Commons.getFormDigest();
+console.log(formDigestValue);
+// will print something like SDF234-sdFDS2334wfescsfe...
+
 SharePoint is handling this automatically if you're running SharePoint Hosted and when you're using the SharePoint MasterPage!
 
 In all other scenarios like
@@ -119,13 +123,11 @@ you've to manually request a FormDigest value and pass it aside your REST reques
 
 It's also watching an injection point 'ShareCoffee.Commons.formDigestValue' where you can hook your custom logic to request a new FormDigest value from SharePoint's REST endpoint. [Read this article on my blog which describes how to request a FormDigest value on the fly](http://dotnet-rocks.com/2014/01/28/query-formdigestvalue-from-sharepoint-using-sharecoffee/).
 
-    var formDigestValue = ShareCoffee.Commons.getFormDigest();
-    console.log(formDigestValue);
-    // will print something like SDF234-sdFDS2334wfescsfe...
 
 ### ShareCoffee.Commons.getQueryString()
 
 If you're interested in the entire QueryString (which is appended to the current url), use
+
 `ShareCoffee.Commons.getQueryString()`.
 
     var queryString = ShareCoffee.Commons.getQueryString();
@@ -135,6 +137,7 @@ If you're interested in the entire QueryString (which is appended to the current
 ### ShareCoffee.Commons.getQueryStringParameter()
 
 Extract a single parameter value from the entire QueryString by calling
+
 `ShareCoffee.Commons.getQueryStringParameter(name)` and pass the name of the parameter as string.
 
 T> It's important to point out, that the return value is not decoded
