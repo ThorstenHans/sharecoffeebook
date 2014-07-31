@@ -39,7 +39,11 @@ Commons is exposing a lot of great functionality, that you can use within your A
 
 ### ShareCoffee.Commons.getAppWebUrl()
 
-As the name implies, you can ask for the current AppWeb url by simply executing   `ShareCoffee.Commons.getAppWebUrl()`. Internally this method is taking care of all the context. first it's checking if your App is running as SharePoint Hosted, if so it's returning the AppWeb url from the global `_spPageContextInfo` object instead of pulling it from the QueryString because it can save some cycles by doing so. (Reading the AppWebUrl from the QueryStirng is common in Provider Hosted Apps)
+As the name implies, you can ask for the current AppWeb url by simply executing
+
+`ShareCoffee.Commons.getAppWebUrl()`.
+
+Internally this method is taking care of all the context. first it's checking if your App is running as SharePoint Hosted, if so it's returning the AppWeb url from the global `_spPageContextInfo` object instead of pulling it from the QueryString because it can save some cycles by doing so. (Reading the AppWeb url from the QueryStirng is common in Provider Hosted Apps)
 
     var myAppWebUrl = ShareCoffee.Commons.getAppWebUrl();
 
@@ -50,6 +54,7 @@ But there are scenarios when you as a developer are going to store the AppWeb ur
     var myAppWebUrl = ShareCoffee.Commons.getAppWebUrl();
 
     console.log(myAppWebUrl);
+
     // will print "https://sample.sharepoint.com/appweburl"
 
     // Providing a method which has to return the AppWeb url as String
@@ -60,5 +65,63 @@ But there are scenarios when you as a developer are going to store the AppWeb ur
     var myAppWebUrl = ShareCoffee.Commons.getAppWebUrl();
 
     console.log(myAppWebUrl);
+
     // will print "https://sample.sharepoint.com/appweburl2"
-I
+
+
+
+### ShareCoffee.Commons.getHostWebUrl()
+
+`getHostWebUrl()` can be used in exactly the same way as `getAppWebUrl()`. By default this method is extracting the HostWeb url from the current QueryString.
+
+    var hostWebUrl = ShareCoffee.Commons.getHostWebUrl();
+
+As the same for `getAppWebUrl()` you can inject either a string or a custom function for querying the HostWeb url by assigning it to `loadHostWebUrlFrom` as shown below
+
+    // inject a custom string
+    ShareCoffee.Commons.loadHostWebUrlFrom = "https://sample.sharepoint.com/sites/sample";
+    var hostWebUrl = ShareCoffee.Commons.getHostWebUrl();
+
+    console.log(hostWebUrl);
+
+    // will print https://sample.sharepoint.com/sites/sample"
+
+    // injecting a custom method
+    ShareCoffee.Commons.loadHostWebUrlFrom = function(){
+       // load HostWeb url from somewhere else
+       return "https://sample.sharepoint.com/sites/sample2";
+    };
+
+    var hostWebUrl = ShareCoffee.Commons.getHostWebUrl();
+    console.log(hostWebUrl);
+
+    // will print https://sample.sharepoint.com/sites/sample2"
+
+### ShareCoffee.Commons.getApiRootUrl()
+
+`getApiRootUrl()` is mostly used internally to construct REST urls. It's returning the combination of `getAppWebUrl()` and `/_api/`.
+
+    var apiRootUrl = ShareCoffee.Commons.getApiRootUrl();
+    console.log(apiRootUrl);
+
+    // will print https://sample.sharepoint.com/appweb/_api/
+
+### ShareCoffee.Commons.getFormDigest()
+
+### ShareCoffee.Commons.getQueryString()
+
+If you're interested in the entire QueryString (which is appended to the current url), use `ShareCoffee.Commons.getQueryString()`.
+
+    var queryString = ShareCoffee.Commons.getQueryString();
+
+    console.log(queryString);
+
+    // will print something like SPHostUrl=foo....
+
+### ShareCoffee.Commons.getQueryStringParameter()
+
+Extract a single parameter value from the entire QueryString by calling `ShareCoffee.Commons.getQueryStringParameter(name)` and pass the name of the parameter as string.
+
+T> It's important to point out, that the return value is not decoded
+T> in order to decode it pipe the return value to JavaScript's
+T> decodeURIComponent() method
