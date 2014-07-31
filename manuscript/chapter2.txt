@@ -2,6 +2,7 @@
 
 Before actually digging into the framework itself, some background and common information about ShareCoffee itself.
 
+![ShareCoffee](images/ShareCoffee_small.png)
 ## License
 
 ShareCoffee is licensed under MIT which means you can use ShareCoffee in your personal projects. For professional developers or companies this is also perfect because they can easily use ShareCoffee to get customer projects done or build new products powered by ShareCoffee, without having the fear to violate any license terms.

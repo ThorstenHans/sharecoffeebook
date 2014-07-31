@@ -39,7 +39,7 @@ Commons is exposing a lot of great functionality, that you can use within your A
 
 ### ShareCoffee.Commons.getAppWebUrl()
 
-As the name implies, you can ask for the current AppWeb url by simply executing `ShareCoffee.Commons.getAppWebUrl()`. Internally this method is taking care of all the context. first it's checking if your App is running as SharePoint Hosted, if so it's returning the AppWeb url from the global `_spPageContextInfo` object instead of pulling it from the QueryString because it can save some cycles by doing so. (Reading the AppWebUrl from the QueryStirng is common in Provider Hosted Apps)
+As the name implies, you can ask for the current AppWeb url by simply executing   `ShareCoffee.Commons.getAppWebUrl()`. Internally this method is taking care of all the context. first it's checking if your App is running as SharePoint Hosted, if so it's returning the AppWeb url from the global `_spPageContextInfo` object instead of pulling it from the QueryString because it can save some cycles by doing so. (Reading the AppWebUrl from the QueryStirng is common in Provider Hosted Apps)
 
     var myAppWebUrl = ShareCoffee.Commons.getAppWebUrl();
 
