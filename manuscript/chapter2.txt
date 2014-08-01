@@ -46,6 +46,10 @@ For CSOM, ShareCoffee is only providing a few helper methods which are abstracti
 
 Last but not least is ShareCoffee.Commons, Commons has been used to write all the other functionalities, it's really the *Core* of ShareCoffee, but also exposing great methods which will save a lot of time and headache during the phase of developing your Apps. For more information on ShareCoffee.Commons, see the dedicated section in chapter 3.
 
+## Browser compatibility
+
+The framework and it's AddOns were mainly designed and developed to support all the browsers Microsoft's Office 365 is supporting. When hitting release v0.1.0 (most recent release when writing this eBook), ShareCoffee became IE8 support. This turned out to be important because SharePoint Server 2013 is still supporting IE8, for Office 365 by contrast requires IE9.
+
 
 ## Bugs / Feature Requests
 
