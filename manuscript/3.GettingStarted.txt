@@ -1,0 +1,120 @@
+# Getting Started
+
+Enough dry background and information about ShareCoffee, let's get started using it. Within the upcoming sections you'll learn how to build a simple *Hello World SharePoint App*. Once the Hello World App is finished you'll get an introduction into the *ShareCoffee.Common* namespace, which is the actual core of ShareCoffee. Almost every additional feature is built on top of ShareCoffee.Commons. It's important to understand all the concepts and functionality which is built in the framework to be as productive as possible when building SharePoint Apps.
+
+## Package Managers
+
+Package Managers are great time savers for every developer. ShareCoffee is available for
+
+ * [NuGet](http://www.nuget.org)
+ * [Bower.IO](http://bower.io)
+
+At the time ShareCoffee has been created, these were the most popular and well-known package managers out there. Every .NET developer should know NuGet, if you don't know it yet, you should read [Scott Hanselman's NuGet introduction](http://www.hanselman.com/blog/IntroducingNuGetPackageManagementForNETAnotherPieceOfTheWebStack.aspx) first.
+
+Bower.IO introduces itself as package manager for the client-side. Which implies that bower is only managing client-side dependencies. Bower became popular with the rise of [Node.JS](http://nodejs.org) and [yeoman](http://yeoman.io).
+
+### Installing ShareCoffee with NuGet
+
+Installing ShareCoffee using NuGet is really simple. Just invoke the *Install-Package* command from the Package Manager Console, or use the Package Manager Dialogs provided by Visual Studio.
+
+    Install-Package ShareCoffee
+
+### Installing ShareCoffee with bower.io
+
+First let's asume that *NodeJS* and *npm* (Node Package Manager) are installed on your development system. If that's true, you can install bower package manager by invoking
+
+    # use g switch to install bower globally
+    npm install bower -g
+    # on unix based systems you've to prefix the command with sudo, which ensures that you've the required permissions
+    sudo npm install bower -g
+
+
+## Hello ShareCoffee
+
+###Prerequirements
+
+In order to complete this sample, you need two things, a Visual Studio 2013 installation on your developoment box and an Office 365 tenant (SharePoint 2013 OnPremise with Apps configured is also ok).
+
+On your SharePoint tenant you also have to create a special kind of SiteCollection, called a **Developer Site**, a "Developer Site" allows you to side-load Apps directly from within Visual Studio.
+
+### Your first SharePoint App with ShareCoffee
+
+There isn't a better way to get started with a framework as actually using it.
+
+Start **Visual Studio 2013** by using the **Run as administrator** option
+
+In VS on the **File** menu, choose **New** and then select **Project**
+
+In the **New Project** Dialog expand the **Visual C#** node, expand the **Office/SharePoint** node and choose **Apps**. Choose **App for SharePoint**.
+
+As name provide something like **HelloShareCoffee** and hit **Ok**.
+
+Visual Studio will open up the SharePoint App wizard where you've to provide the url to your **Developer Site**, in the section below, you've to specify the kind of you're going to create.
+
+![SharePoint App Wizard in Visual Studio 2013](images/GettingStarted/app_wizard.png)
+
+T> In the picture above, you're seeing three types of Apps, Autohosted Apps are
+T> depricated, so currently there are only two real options. If you've already created
+T> Autohosted Apps for SharePoint read [this article for more inforation](http://blogs.office.com/2014/05/16/update-on-autohosted-apps-preview-program/)
+
+For this sample lets choose **SharePoint-Hosted** as type of the App and click **Finish**. Depending on your system configuration, you've now to provide credentials for accessing the Developer Site. After providing them, VS is going to spin up the project.
+
+Open the **Package Manager Console** by focusing the VS2013's new **Quick Launch** and start typing **Package Manager Console**. From the list of results select **View -> Other Windows -> Package Manager Console**
+
+![Visual Studio 2013's Quick Launch](images/GettingStarted/quicklaunch.png)
+
+In the Package Manage console type
+
+    Install-Package ShareCoffee
+
+At this point ShareCoffee will be installed into your App project (revisit the Scripts Folder).
+
+### Updating Default.aspx
+
+Default.aspx is responsible for actually presenting your App and it's the page that will be shown when an user clicks on your App-Tile.
+
+You can find the Default.aspx underneath **Pages** open it by double-clicking it. Look for a comment like this
+
+    <!-- Add your JavaScript to the following file -->
+
+Load ShareCoffee right here by referencing the minified ShareCoffee JavaScript file
+
+    <script type="text/javascript" src="../Scripts/ShareCoffee/ShareCoffee.min.js">
+    </script>
+
+Within the **PlaceHolderMain Content Control** remove all the content and replace it with the following HTML
+
+    <h1>Hello ShareCoffee</h1>
+    <h4> AppWeb Url:
+      <span id="appWebUrl"></span>
+    </h4>
+    <h4> HostWeb Url:
+      <span id="hostWebUrl"></span>
+    </h4>
+    <h4> API Root Url:
+      <span id="apiRootUrl"></span>
+    </h4>
+    <h4> Form Digest:
+      <span id="formDigest"></span>
+    </h4>
+
+### Updating App.js
+
+Finally the JavaScript logic has to be changed, open the App.js file by double-clicking it. (It's located in the Scripts folder). Delete **all the content** from the JavaScript file and write the following few lines of JavaScript code.
+
+    $(document).ready(function() {
+      $("#appWebUrl").text(ShareCoffee.Commons.getAppWebUrl());
+      $("#hostWebUrl").text(ShareCoffee.Commons.getHostWebUrl());
+      $("#apiRootUrl").text(ShareCoffee.Commons.getApiRootUrl());
+      $("#formDigest").text(ShareCoffee.Commons.getFormDigest());
+    });
+
+The script is really straight forward. It's piping the result values from ShareCoffee's methods directly to each span's **text** method.
+
+### Testing the App
+
+ Install and test your SharePoint-Hosted App by hitting **F5** in Visual Studio. VS is going to package the App, upload it to SharePoint and installs it on your Developer Site.
+
+ Your default browser should now pop up and load the Default.aspx. If you've made no mistakes, it should look like this
+
+ ![Sample 1 Result](images/GettingStarted/sample1_result.png)
