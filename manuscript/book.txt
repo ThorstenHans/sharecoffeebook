@@ -2,6 +2,11 @@
 2.AboutShareCoffee.txt
 3.GettingStarted.txt
 4.ShareCoffee.Commons.txt
-5.Chapter5.txt
-6.Chapter6.txt
-7.Chapter7.txt
+5.ShareCoffee.UI.txt
+6.ShareCoffee.CSOM.txt
+7.ShareCoffee.REST.txt
+8.ShareCoffee.CrossDomain.txt
+9.ShareCoffee.AddOns.txt
+10.BuildASharePointHostedApp.txt
+11.BuildAProviderHostedApp.txt
+
