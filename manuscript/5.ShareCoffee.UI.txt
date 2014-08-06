@@ -46,3 +46,91 @@ The entire configuration for the AppChrome is done by using ShareCoffee's model 
 
 
     ShareCoffee.UI.loadAppChrome("sp-chrome", options);
+
+
+## SharePoint Notifications
+
+Why should you care about an abstraction layer for SharePoint's notification system? Well, depending on your app and how you hook up your JavaScript code, SharePoint may still be delivering the JavaScript file while you're trying to create notifications, if you run in such an issue, an exception will be thrown and it'll prevent your script from executing as expected.
+
+ShareCoffee, is double checking if all the required client-scripts are loaded, if any script is not loaded when you try to create a notification, it's simply logging the error to the console instead of throwing an error.
+
+So the abstraction layer is making your code even more robust.
+
+For notifications there are currently two methods available
+
+  * `ShareCoffee.UI.showNotification()`
+  * `ShareCoffee.UI.removeNotification()`
+
+### ShareCoffee.UI.showNotification()
+
+Using this method is straight forward. There is a single required parameter for this methods which is the notification text, as an optional second parameter you can provide a boolean flag which indicates if the notifcation should be sticky or not.
+
+The method is returning an identifier, which can be used later to actually remove the notification again.
+
+    var message = "Hello, ShareCoffee Notification";
+    var notificationId = ShareCoffee.UI.showNotification(message);
+    var notificationId2 = ShareCoffee.UI.showNotification(message, true);
+
+### ShareCoffee.UI.removeNotification()
+
+Removing a notification makes only sense if we're talking about sticky notifications, because default (non-sticky) notifications will disappear after a few seconds automatically.
+
+Assume the code from the sample above, you've stored the identifier of the second notification in a variable called `notificationId2`, let's now remove that notification by calling `ShareCoffee.UI.removeNotification` and pass the identifier as parameter.
+
+    ShareCoffee.UI.removeNotification(notificationId2);
+    // Notification will disappear immediately
+
+
+## SharePoint Status messages
+
+When it comes to SharePoint status messages all the advantages from Notifications will again be taken in place. But for Status messages there are four methods available
+
+  * `ShareCoffee.UI.showStatus()`
+  * `ShareCoffee.UI.setStatusColor()`
+  * `ShareCoffee.UI.removeStatus()`
+  * `ShareCoffee.UI.removeAllStatus()`
+
+### ShareCoffee.UI.showStatus()
+
+The `showStatus` method has up to four parameters, where first two parameters are required.
+
+|Name|Required|DataType|Further Information|
+|----|--------|--------|-------------------|
+|Title|true|String||
+|Message|true|String|can contain HTML|
+|ShowOnTop|false|boolean|defines if status should appear on top (defaults to false)|
+|Color|false|String|provide one of the following (red yellowblue) (defaults to blue)|
+
+As the same for notification this method will also return the identifier of the generated status message
+
+    var title = "ShareCoffee Status";
+    var message "This is just a simple status update";
+    var statusId = ShareCoffee.UI.showStatus(title, message, false, 'yellow');
+
+
+### ShareCoffee.UI.setStatusColor()
+
+Once you've created a status message and you've stored it's status-identifer in a variable you can change the color of that particular status by invoking
+`ShareCoffee.UI.setStatusColor()`. There are two required parameters for this method
+
+|Name|DataType|Further Information|
+|----|--------|-------------------|
+|StatusId|String|Identifer from the status you'd like to alter|
+|Color|String|New color value again one of the following (blue red yellow)|
+
+   ShareCoffee.UI.setStatusColor(statusId, 'red');
+
+ If you pass null or undefined as a value for statusId, ShareCoffee will not call SharePoint's internal scripts, because this would result in another exception, so again it's making your code even more robust.
+
+### ShareCoffee.UI.removeStatus()
+
+The `removeStatus()` method will receive a single parameter which is the statusId. Again no call will be forwarded to SharePoint if you pass null or undefined.
+
+    ShareCoffee.UI.removeStatus(statusId);
+
+### ShareCoffee.UI.removeAllStatus()
+
+There are scenarios when you'd like to clean all existing status messages from the current website. This can easily be achieved by using the `removeAllStatus` method.
+
+    ShareCoffee.UI.removeAllStatus();
+    
