@@ -117,10 +117,11 @@ Once you've created a status message and you've stored it's status-identifer in 
 |----|--------|-------------------|
 |StatusId|String|Identifer from the status you'd like to alter|
 |Color|String|New color value again one of the following (blue red yellow)|
-
-   ShareCoffee.UI.setStatusColor(statusId, 'red');
+    ShareCoffee.UI.setStatusColor(statusId, 'red');
 
  If you pass null or undefined as a value for statusId, ShareCoffee will not call SharePoint's internal scripts, because this would result in another exception, so again it's making your code even more robust.
+
+{pagebreak}
 
 ### ShareCoffee.UI.removeStatus()
 
@@ -133,4 +134,3 @@ The `removeStatus()` method will receive a single parameter which is the statusI
 There are scenarios when you'd like to clean all existing status messages from the current website. This can easily be achieved by using the `removeAllStatus` method.
 
     ShareCoffee.UI.removeAllStatus();
-    
