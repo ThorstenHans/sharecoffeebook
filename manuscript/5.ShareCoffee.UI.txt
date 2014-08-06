@@ -1,1 +1,48 @@
 #ShareCoffee.UI
+
+When you're building Apps for SharePoint it's a best practice to re-use some of the UI characteristics that SharePoint as a platform is offering to you. Most of the features provided by ShareCoffee.UI are only interesting for Provider-Hosted Apps, because SharePoint-Hosted Apps get these capabilities by re-using SharePoint's MasterPage.
+But ShareCoffee.UI is also exposing some small helpers regarding notifications and status messages which may also be interesting if it comes to SharePoint-Hosted App development.
+
+## SharePoint App-Chrome-Bar
+
+The App-Chrome-Bar is perhaps the most important component that you should include in your Provider-Hosted App. It's providing a common experience for Endusers. The App-Chrome-Bar is drawn on the top of your App and shows important links to all Office 365 services or On-Premise components from your SharePoint Farm.
+
+In Addition to the Chrome-Bar itself, also the default stylesheet (CSS) from SharePoint will be included in your App. Once the stylesheet is loaded, you can easily reuse all the default SharePoint CSS classes. These CSS classes are theme-aware which means that your customer will have the same coloring (like accent colors) in your App as it's defined in SharePoint itself.
+
+Microsoft is of course providing a Sample on MSDN how to integrate the App-Chrome-Bar in your SharePoint App, but the sample has the following disadvantages
+
+ * adds a dependency to jQuery
+ * is roughly about 50 lines of code
+ * not offering IntelliSense for the code you've to write
+
+ShareCoffee is offering a single method, which you've to call in order to get the App-Chrome-Bar.
+
+`ShareCoffee.UI.loadAppChrome(target, options);`
+
+Yes, it's that easy. Behind the scenes all the required scripts and stylesheet files were dynamically download from the current SharePoint environment and on-the-fly loaded in the scope of the current document. In opposite to the current sample from MSDN, there is no need for jQuery right here. ShareCoffee is doing all the magic using plain old JavaScript in order to support all the available and supported browsers.
+
+Providing a proper configuration (or options object) to the `loadAppChrome` method is also very easy and straight forward. The first parameter of `loadAppChrome` is the identfier from the target div, which has to be placed in your page
+
+    <!-- Start.html -->
+    <div id="sp-chrome"></div>
+
+The entire configuration for the AppChrome is done by using ShareCoffee's model classes `SettingsLink` and `ChromeSettings`.
+
+    var settingsLink1 = new ShareCoffee.SettingsLink(
+      'foo.html', //Path for the SettingsPage
+      'Settings Page', // Page title
+      true // boolean which indicates if entire QueryString should be passed
+    );
+    var settingsLink2 = new ShareCoffee.SettingsLink(
+      'profile.html', 'Your Profile', false);
+
+    var options = new ShareCoffee.ChromeSettings(
+      iconUrl,  // path to the App icon
+      'MyApp Title', // App's title
+      'Help.aspx', // Path to your Help Page (optional)
+      settingslink1,
+      settingslink2 // it's a splat, provide as many SettingsLinks as you have to
+      );
+
+
+    ShareCoffee.UI.loadAppChrome("sp-chrome", options);
