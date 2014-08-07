@@ -54,9 +54,84 @@ Custom Actions are small UI components which can be hooked into different. prede
 Like back in the days of SharePoint 2007 or SharePoint 2010 you'll use either CAML or given Designers in Visual Studio in order to create Custom Actions.
 
 
+## App Hosting Types
+
+Microsoft is currently offering two different kinds of Hosting for SharePoint Apps. 
+
+T> ## Autohosted Apps
+T> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option, but Authohosted Apps are already depricated.
 
 ## SharePoint Hosted Apps
 
+SharePoint Hosted Apps are the easiest option when building SharePoint Apps. SharePoint (the platform itself) is responsible for hosting and isolating your App. This great functionality comes of course with some limitations. In SharePoint Hosted Apps, you're limited to client-side technologies. In bottom line you can use
+
+ * HTML5
+ * CSS3
+ * JavaScript
+
+JavaScript can be replaced in the list above by languages compiling into JavaScript such as [TypeScript](http://www.typescriptlang.org/) or [CoffeeScript](http://coffeescript.org/). Both of these languages are offering great advantages compared to plain old JavaScript and I definitely suggest you to review both languages and use one of them instead of writing plain old JavaScript manually.
+
+Both languages are compiling into the *Good Parts of JavaScript* and again, these languages will make you even more productive and you can save more and more time.
+
+
 ## Provider Hosted Apps
 
+For serious Apps you'll definetley consider building a Provider-Hosted-App instead of a SharePoint-Hosted App. Provider-Hosted Apps are powered by native web applications, which are integrated into SharePoint. Most important aspect here is, that your code will not run on a SharePoint box. As the name implies are you - as a Solution Provider - responsible for hosting your App. It's totally up to you if you're relying on servers sitting in your data center, web servers hosted by your customers or if you bet on Microsoft Azure. 
+
+Visual Studio allows you as a developer to create either an ASP.NET WebForms Application or an ASP.NET MVC Application when building Provider-Hosted Apps for SharePoint. But of course can you use any programming language to do so. If you're familiar with Node.JS or RubyOnRails, you can use any of them to build your App's backend. 
+
+## OAuth 2.0
+
+SharePoint 2013 and SharePoint Online are by default using [OAuth 2.0](http://oauth.net/2/) in order to deal with security and authorization. One of the most important aspecs of OAuth2.0 is that all the pieces from your App (all the relying parties) have to communicate over HTTPS **without any exception**. As described in OAuth2.0 specs, apps can either request access in behalf of a user (in such a case SharePoint is dealing with both, an UserContext and an AppContext), or Apps can also request access to resources without being controlled by an user (SharePoint is only dealing with an AppContext).
+
+In OAuth2.0 secured scenarios, applications have to request permissions for each and every resource they'd like to access. By accessing all crud operations are ment. (Create|Read|Update|Delete). Instead of dealing with user credentials OAuth2.0 relies on Tokens which are exchanged by SharePoint and your app. This reduces the pain of storing passwords and user information inside of your App. Another great advantage from using OAuth2.0 is management. SharePoint Administrators are able to revoke access for each and every App in no time. 
+
 ## App Permissions
+
+As an App Developer you should always try to request as few permissions as possible. Users have only the chance to give all the requested permissions during installation time. There are no further choices available. 
+
+App Permissions are describing what your App needs to access in order to fill enduser's requirements. When creating a new SharePoint App Project in Visual Studio, you can request permissions from within the **AppManifest.xml** file. Visual Studio 2013 is also providing a Visual Designer for the AppManifest, so you have not to dig deep in the XML Schema for the AppManifest.
+
+An App Permission is composed of up to three parts
+
+|Part|Description|
+|----|-----------|
+|Scope|Defines the resource (SharePoint Item) your App is interested in|
+|Permission|Determines which action you App will perform on the scope|
+|Properties|Optional carrier for futher configuration|
+
+
+For example let's consider that you're building an App which should use SharePoint's Search engine to pull information from SharePoint. In order to get your App working you've to configure the following permission request using the AppManifest Designer
+
+![Requesting Permissions using Visual Studio 2013](images/introduction/vs2013_premission_request.png)
+
+See the following list of all available scopes and their permissions.
+
+|Scope|Product|Permissions|
+|-----|-------|-----------|
+|Business Connectivity Services (BCS)|SharePoint|Read|
+|Core|Project Server|Manage|
+|Core|SharePoint Social|Read,Write,Manage,FullControl|
+|Enterprise Resources|Project Server|Read,Write|
+|List|SharePoint|Read,Write,Manage,FullControl|
+|Multiple Projects|Project Server|Read,Write|
+|News Feed|SharePoint Social|Read,Write,Manage,FullControl|
+|Reporting|Project Server|Read|
+|Search|SharePoint Social|QueryAsUserIgnoreAppPrincipal|
+|Single Project|Project Server|Read,Write|
+|Site Collection|SharePoint|Read,Write,Manage,FullControl|
+|Status Updates|Project Server|SubmitStatus|
+|Taxonomy|SharePoint|Read,Write|
+|Tenant|SharePoint|Read,Write,Manage,FullControl|
+|User Profiles|SharePoint Social|Read,Write,Manage,FullControl|
+|Web|SharePoint|Read,Write,Manage,FullControl|
+|Workflow|Project Server|Elevate|
+
+The Premission Masks are mapped to SharePoint actions
+
+|Permission|Included SharePoint Permission|
+|----------|------------------------------|
+|Read|<ul><li>View Items</li><li>Open Items</li><li>View Versions</li><li>Create Alerts</li><li>Use Self-Service Site Creation</li><li>View Pages</li>|
+|Write|Read permissions plus<ul><li>Add Items</li><li>Edit Items</li><li>Delete Items</li><li>Delete Versions</li><li>Browse Directories</li><li>Edit Personal User Information</li><li>Manage Personal Views</li><li>Add/Remove Personal Web Parts</li><li>Update Personal Web Parts</li></ul>|
+|Manage|Write permissions plus <ul><li>Manage Lists</li><li>Add and Customize Pages</li><li>Apply Themes and Borders</li><li>Apply Style Sheets</li></ul>|
+|FullControl|All Permissions|
