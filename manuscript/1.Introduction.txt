@@ -1,5 +1,60 @@
 # SharePoint Apps Introduction
 
+ShareCoffee is a open source library for SharePoint App developers, if you're already familiar with SharePoint App Development, you can of course skip this chapter. If you're new to SharePoint App development, you should investigate a few minutes and read this chapter. It's providing a rough introduction into SharePoint's App Model which is part of both SharePoint platforms, Microsoft SharePoint 2013 and SharePoint Online as part of Microsoft's Office 365.
+
+Apps are here to solve some issues which have been part of previous SharePoint Versions caused by both existing (and still supported development models)
+
+  * Sandboxed Solutions
+  * Full Trust Code Solutions (FTC)
+
+Some of these issues are
+
+  * Have dedicated permissions for extensions (Apps)
+  * Rely on a combination of App- and User-Permissions
+  * Use Web Standards for extending SharePoint
+  * Provide a robust extension model for hosting scenarios (Office 365)
+  * Remove custom code from SharePoint Servers
+  * Provide scalable architectures for OnDemand, OnPremise and Hybrid scenarios
+
+
+## App Isolation
+
+Each App has it's own isolated scope. Microsoft is using a common container which is well-known by almost every SharePont Developer, a website (SPWeb). When an user installs an App on a SharePoint site, SharePoint will automatically create a new Sub-Web which is called AppWeb. AppWebs are hidden from the user, they wont be displayed anywhere in SharePoint's UI. Most times I explain AppWebs as 'developers playground'. It's the place where SharePoint App developers can create Lists, ContentTypes, Fields, Workflows, Pages, Scripts,....
+
+Of course can you create lists on the SharePoint site where you've installed the App. This site is always called HostWeb. If you're interested in accessing, creating, changing or deleting data from the HostWeb, your App has to explicitly request permissions in order to do so. The same is also true for accessing services which are exposed by SharePoint such as 
+
+  * Search
+  * User Profile Store
+
+As long as your App will only work with SharePoint-Items (SP-Is) within the boundaries of your AppWeb, you don't have to care about permissions. For more information on App Permissions, see the corresponding section in this chapter.
+
+
+## App Shapes
+
+SharePoint is offering three different shapes for Apps. 
+
+  * Immersive Full Page Apps
+  * App Parts
+  * Custom Actions
+
+These three shapes are directly visible to your users. Each App can offer various numbers of items from any shape. Lets review each of the shapes.
+
+### Immersive Full Page Apps
+
+Immersive Full Page Apps are the most common shape for Apps in SharePoint. It's an entire web-page which gives you the entire surface for delivering additional value to SharePoint.
+
+### App Parts
+
+App Parts are small components which can be plugged into SharePoint sites. App Parts are very similar to legacy WebParts, that all SharePoint users know since the early days in the SharePoint era. The big different combined to a legacy WebPart is that AppParts are rendered as an IFrame. The IFrame's source attribute is targeting to a web-page sitting in the AppWeb.
+
+### Custom Actions
+
+Custom Actions are small UI components which can be hooked into different. predefined sections all over SharePoint's UI. Most popular example may be the Edit Control Block (ECB) which is the ContextMenu within ListViews. Another great example are Ribbon Commands. Microsoft's increadible interaction control can be extended in exactly the same way as the ECB.
+
+Like back in the days of SharePoint 2007 or SharePoint 2010 you'll use either CAML or given Designers in Visual Studio in order to create Custom Actions.
+
+
+
 ## SharePoint Hosted Apps
 
 ## Provider Hosted Apps
