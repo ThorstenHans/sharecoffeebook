@@ -17,7 +17,7 @@ Microsoft is of course providing a Sample on MSDN how to integrate the App-Chrom
 
 ShareCoffee is offering a single method, which you've to call in order to get the App-Chrome-Bar.
 
-`ShareCoffee.UI.loadAppChrome(target, options);`
+    ShareCoffee.UI.loadAppChrome(target, options);
 
 Yes, it's that easy. Behind the scenes all the required scripts and stylesheet files were dynamically download from the current SharePoint environment and on-the-fly loaded in the scope of the current document. In opposite to the current sample from MSDN, there is no need for jQuery right here. ShareCoffee is doing all the magic using plain old JavaScript in order to support all the available and supported browsers.
 
@@ -117,6 +117,7 @@ Once you've created a status message and you've stored it's status-identifer in 
 |----|--------|-------------------|
 |StatusId|String|Identifer from the status you'd like to alter|
 |Color|String|New color value again one of the following (blue red yellow)|
+
     ShareCoffee.UI.setStatusColor(statusId, 'red');
 
  If you pass null or undefined as a value for statusId, ShareCoffee will not call SharePoint's internal scripts, because this would result in another exception, so again it's making your code even more robust.

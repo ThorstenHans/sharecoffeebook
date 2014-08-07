@@ -72,9 +72,9 @@ As the same for `getAppWebUrl()` you can inject either a string or a custom func
 
 `getFormDigest()` is one of the important helper methods when working with REST operations. Because SharePoint is doing request validations for all requests that create, update or delete data from SharePoint, a Form Digest value has to be passed to each of the REST requests.
 
-var formDigestValue = ShareCoffee.Commons.getFormDigest();
-console.log(formDigestValue);
-// will print something like SDF234-sdFDS2334wfescsfe...
+    var formDigestValue = ShareCoffee.Commons.getFormDigest();
+    console.log(formDigestValue);
+    // will print something like SDF234-sdFDS2334wfescsfe...
 
 SharePoint is handling this automatically if you're running SharePoint Hosted and when you're using the SharePoint MasterPage!
 
