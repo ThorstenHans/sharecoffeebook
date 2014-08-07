@@ -135,3 +135,9 @@ The Premission Masks are mapped to SharePoint actions
 |Write|Read permissions plus<ul><li>Add Items</li><li>Edit Items</li><li>Delete Items</li><li>Delete Versions</li><li>Browse Directories</li><li>Edit Personal User Information</li><li>Manage Personal Views</li><li>Add/Remove Personal Web Parts</li><li>Update Personal Web Parts</li></ul>|
 |Manage|Write permissions plus <ul><li>Manage Lists</li><li>Add and Customize Pages</li><li>Apply Themes and Borders</li><li>Apply Style Sheets</li></ul>|
 |FullControl|All Permissions|
+
+## App-Only Permissions
+
+Perhaps have you noticed the **Allow the App to make App-Only calls to SharePoint** checkbox in the picture above. This setting is only working for Provider-Hosted Apps. Consider an WebApplication which is using TimerJobs to calculate things each and every day. Depending on this calculate your App has to update a SharePoint ListItem. In such a scenario no **real User** is actually using your App. In order to sucessfully access resources in SharePoint your App has to execute an AppOnly call at this time. 
+
+It's just a simple checkbox, but it enables you to build even more powerful SharePoint Apps. If you'd like to learn more about App authorization policies in SharePoint 2013, you should read [this MSDN article](http://msdn.microsoft.com/library/fp179892(office.15).aspx)
