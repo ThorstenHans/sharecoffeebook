@@ -15,4 +15,43 @@ Another great example for Search are PostQueries. Once you Search query becomes 
 
 ## Build your own
 
-Two AddOns are available, now it's up to you, build your own!
+ShareCoffee is of course offering an entire wrapper for all REST services SharePoint is currently offering, but on top of that you could also provide custom Add-Ons. When talking about Add-Ons, two different kinds of Add-Ons have to be mentioned. First, there are Add-Ons covering dedicated services such as ShareCoffee.Search or ShareCoffee.UserProfiles. This kind of Add-Ons are providing dedicated helpers and time-savers for a given service hosted by SharePoint or SharePoint Online.
+
+On the other side, there are Domain Add-Ons. Domain Add-Ons are providing a special kind of programming interface for an already given endpoint in SharePoint. For example consider you’re writing multiple apps offering task management, by providing a ‘ShareCoffee.TaskService’ Add-On, you can easily reduce the amount of code to write within each of these apps.
+
+### AddOn Development Stack
+
+If you aren’t familiar with the [yeoman](http://yeoman.io) frontend development workflow, you should consider reading the tutorial on it’s website. Yeoman is a productivity boost for every web developer and makes creating new Web-Apps very easy. ShareCoffee’s Add-Ons are based on a special yeoman generator. Generators for yeoman are small templates that define how a new project based on this generator will look like. The generator-sharecoffee-addon is responsible for pulling all the development dependencies from the web and installing them on your development machine. Most important to know about yeoman is the fact that it’s based on [Node.JS](http://nodejs.org), so you can create new ShareCoffee Add-Ons from almost every device.
+
+
+### Installing Yeoman and the Add-On Generator
+
+Installing Node.JS is fairly simple and will not be covered here. Check the web for thousands of articles describing how to install Node.JS on your operating system.
+With a valid Node.JS installation you’ll also have access to the Node Package Manager (called npm). Yeoman and it’s generators have to be installed globally, therefor you need to have administrative (or root) permissions in order to install the required packages on your system. Actually installing yeoman is just a single command.
+
+    npm install -g yo
+
+When executing this command npm will check your system and install all the dependencies currently not installed on your system. Yeoman itself is offering nothing without it’s generators therefor let’s install the `generator-sharecoffee-addon` by executing
+
+    npm install -g generator-sharecoffee-addon
+
+At this point you’re able to start with your new Add-On. So let’s create a new directory for our Add-On
+
+    #go to your development folder
+    #on a Mac this will look like this
+
+    cd ~/dev/ 
+    
+    #on a Windows machine it'll look like this
+    cd /c/dev/
+
+    mkdir MyFirstAddOn
+    cd MyFirstAddOn
+
+    # now let's use yeoman for scaffolding the entire AddOn by executing
+    yo sharecoffee-addon
+
+The generator will be invoked and it’ll ask you a few questions about your new Add-On, it’s important to provide real answers here, because yeoman is heavily using template generators in order to save your time. Again it’ll pull down all the project related dependencies and install them in the scope of the current project. You’ll receive the following folder structure within the `MyFirstAddOn` folder
+
+
+
