@@ -25,8 +25,18 @@ First let's asume that *NodeJS* and *npm* (Node Package Manager) are installed o
 
     # use g switch to install bower globally
     npm install bower -g
+
     # on unix based systems you've to prefix the command with sudo, which ensures that you've the required permissions
     sudo npm install bower -g
+
+    # At this point you should have bower installed on your system.
+    # Go into your project directory and execute the following command to install 
+    # ShareCoffee form the bower.io dictionary
+
+    bower install sharecoffee
+
+Bower offers exactly the same capabilities as NuGet like updating, downgrading, uninstalling dependencies. ShareCoffee is offering it's package also on bower.io in order to support SharePoint App developers that use NodeJS or RubyOnRails for building their Apps, because bower.io is more popular in their communities.
+
 
 
 ## Hello ShareCoffee

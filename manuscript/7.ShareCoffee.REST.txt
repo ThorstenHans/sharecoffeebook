@@ -49,3 +49,24 @@ T> ## IE 8 workaround
 T> IE8 is supported by SharePoint 2013 OnPremise, if you're targeting this browser, you've to replace the **for** property by the **f** shorthand.
 T> IE9 is not able to execute a function or access a proprety called **for**
 
+
+## Providing REST Properties
+
+Now you've seen ShareCoffee's entire API, there is only one thing missing : The REST operation configuration. ShareCoffee is providing some cool features, which will help you building exactly these configurations.
+
+Let's start with a simple example (All the samples assume that you're using jQuery). Let's say you'd like to read all the ContentTypes available on the AppWeb. So by definition it's a **read** operation, ContentTypes are available on web level, so we have to build a REST query which pulls out the ContentTypes from
+
+`https://myapp.mytenant.sharepoint.com/sites/MyTeamSite/MyApp/_api/web/ContentTypes`
+
+    var options = {
+      url: 'web/ContentTypes'
+    };
+    $.ajax(ShareCoffee.REST.build.read.for.jQuery(options))
+    .done(onSuccess)
+    .fail(onError);
+
+In the sample code above we've only specified a part of the entire url, this is working because ShareCoffee is internally concatting the url you provide to `ShareCoffee.Commons.getApiRootUrl()`. Beside this, ShareCoffee knows that you're executing a GET query and working on the AppWeb, so it's able to extend the HTTP Request by all the headers required to successfully executing such a read operation against the AppWeb. The sample above can also be writtin like this
+
+    $.ajax(ShareCoffee.REST.build.read.for.jQuery({url: 'web/ContentTypes'}))
+    .done(onSuccess)
+    .fail(onError);
