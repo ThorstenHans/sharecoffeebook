@@ -80,7 +80,11 @@ Assume the code from the sample above, you've stored the identifier of the secon
     ShareCoffee.UI.removeNotification(notificationId2);
     // Notification will disappear immediately
 
+### ShareCoffee Notifications Sample
 
+![ShareCoffee Notifications Sample App](images/sharecoffee_ui/sharecoffee_notifications.png)
+
+Check out [this github repository](https://github.com/ThorstenHans) there you can find all the source for the app showed in the image above.
 ## SharePoint Status messages
 
 When it comes to SharePoint status messages all the advantages from Notifications will again be taken in place. But for Status messages there are four methods available
@@ -135,3 +139,10 @@ The `removeStatus()` method will receive a single parameter which is the statusI
 There are scenarios when you'd like to clean all existing status messages from the current website. This can easily be achieved by using the `removeAllStatus` method.
 
     ShareCoffee.UI.removeAllStatus();
+
+### ShareCoffee Status Messages Sample
+
+![ShareCoffee Status Messages Sample App](images/sharecoffee_ui/sharecoffee_statusmessages.png)
+
+Check out [this github repository](https://github.com/ThorstenHans) there you can find all the source for the app showed in the image above.
+

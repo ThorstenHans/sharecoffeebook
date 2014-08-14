@@ -67,11 +67,45 @@ Let's start with a simple example (All the samples assume that you're using jQue
 
 In the sample code above we've only specified a part of the entire url, this is working because ShareCoffee is internally concatting the url you provide to `ShareCoffee.Commons.getApiRootUrl()`. Beside this, ShareCoffee knows that you're executing a GET query and working on the AppWeb, so it's able to extend the HTTP Request by all the headers required to successfully executing such a read operation against the AppWeb. The sample above can also be writtin like this
 
-    $.ajax(ShareCoffee.REST.build.read.for.jQuery({url: 'web/ContentTypes'}))
-    .done(onSuccess)
-    .fail(onError);
+    $.ajax(ShareCoffee.REST.build.read.for.jQuery({
+      url: 'web/ContentTypes'
+    })).done(onSuccess).fail(onError);
+
+    // even shorter by using the ShareCoffee shorthand
+    $.ajax($s.REST.build.read.for.jQuery({
+      url: 'web/ContentTypes'
+    })).done(onSuccess).fail(onError);
 
 
+A little bit more complicated as reading is creating items using the REST API. For this example, assume that you've to create a new list on your AppWeb using SharePoint's REST API. In order to do so, you've to provide a descriptive object which tells SharePoint what to create.
+
+    var listInfo = {
+      '__metadata' : {'type': 'SP.List'},
+      'AllowContentTypes': true,
+      'BaseTemplate': 100,
+      'ContentTypesEnabled': true,
+      'Title': 'My REST List',
+      'Description': 'This list has been created by ShareCoffee'
+    };
+
+    // execute the REST call and pass the listInfo as payload
+    $.ajax(ShareCoffee.REST.build.create.for.jQuery({
+      url: 'web/lists/',
+      payload: listInfo
+    })).done(onSuccess).fail(onError);
+
+Updating the list we've just created is also very straight forward. you've to pass the properties you like to change as payload.
+
+    var updateListInfo = {
+      '__metadata': {'type': 'SP.List'},
+      'Title': 'My Buying List'
+    };
+
+    // execute the REST call and pass the updateListInfo as payload
+    $.ajax(ShareCoffee.REST.build.update.for.jQuery({
+      url: "web/lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')",
+      payload: updateListInfo
+    })).done(onSuccess).fail(onError);
 ## JSONLight support in Office365
 
 In August 2014, Microsoft announced the general availability of JSONLight support for SharePoint Online's REST API. JSONLight support is also backed into ShareCoffee. 
@@ -93,16 +127,16 @@ ShareCoffee is exposing a single property which will control this for all the qu
 See the short sample below, which demonstrates how to use `ShareCoffee.JsonRequestBehaviors` object in order to change the behavior easily
 
     ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.minimal
-    # all requests will send odata=minimalmetadata as Accept header
+    // all requests will send odata=minimalmetadata as Accept header
 
     ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.nometadata
-    # all requests will send odata=nometadata as Accept header
+    // all requests will send odata=nometadata as Accept header
 
     ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.verbose
-    # all requests will send odata=verbose as Accept header
+    // all requests will send odata=verbose as Accept header
 
     ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.default
-    # all requests will send odata=verbose as Accept header
+    // all requests will send odata=verbose as Accept header
 
 
 See [this article on blogs.office.com](http://blogs.office.com/2014/08/13/json-light-support-rest-sharepoint-api-released/) which describes how REST responses will reflect this setting.
