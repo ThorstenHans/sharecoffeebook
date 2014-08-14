@@ -106,6 +106,72 @@ Updating the list we've just created is also very straight forward. you've to pa
       url: "web/lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')",
       payload: updateListInfo
     })).done(onSuccess).fail(onError);
+
+Deleting the list you've just created is also very easy just use the delete property and specify the url you've used for updating the list.
+
+    $.ajax(ShareCoffee.REST.build.delete.for.jQuery({
+      url: "web/lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')"
+    })).done(onSuccess).fail(onError);
+
+
+## Using ShareCoffee.REST for HostWeb Access
+
+Accessing data from the HostWeb instead of the AppWeb would result in huge changes that you've to make when you aren't using ShareCoffee. With ShareCoffee this is pretty easy. You've just to add the `hostWebUrl` parameter to your REST request properties.
+
+T> ## Don't forget the permissions
+T> When accessing resources from the HostWeb, you've to explicitly request permissions for those resources. If you're not aware of permissions for SharePoint Apps, review Chapter 1, there is a dedicated section on SharePoint App Permissions.
+
+### Creating a List on the HostWeb
+
+    var listInfo = {
+      '__metadata' : {'type': 'SP.List'},
+      'AllowContentTypes': true,
+      'BaseTemplate': 100,
+      'ContentTypesEnabled': true,
+      'Title': 'My REST List',
+      'Description': 'This list has been created by ShareCoffee'
+    };
+
+    // execute the REST call and pass the listInfo as payload
+    $.ajax(ShareCoffee.REST.build.create.for.jQuery({
+      url: 'web/lists/',
+      hostWebUrl: ShareCoffee.Commons.getHostWebUrl(), 
+      payload: listInfo
+    })).done(onSuccess).fail(onError);
+
+
+### Updating a List on the HostWeb
+
+    var updateListInfo = {
+      '__metadata': {'type': 'SP.List'},
+      'Title': 'My Buying List'
+    };
+
+    // execute the REST call and pass the updateListInfo as payload
+    $.ajax(ShareCoffee.REST.build.update.for.jQuery({
+      url: "web/lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')",
+      hostWebUrl: ShareCoffee.Commons.getHostWebUrl(), 
+      payload: updateListInfo
+    })).done(onSuccess).fail(onError);
+
+### Reading List Information from the HostWeb
+
+    $.ajax(ShareCoffee.REST.build.read.for.jQuery({
+      url: "web/Lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')",
+      hostWebUrl: ShareCoffee.Commons.getHostWebUrl()
+    })).done(onSuccess).fail(onError);
+
+
+### Deleting the List form the HostWeb
+
+    $.ajax(ShareCoffee.REST.build.delete.for.jQuery({
+      url: "web/lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')",
+      hostWebUrl: ShareCoffee.Commons.getHostWebUrl()
+    })).done(onSuccess).fail(onError);
+
+
+As you can see, you don't have to make many changes in order to move queries targeting the AppWeb to the HostWeb. This is a huge advantage of ShareCoffee. In real customer driven projects it's not uncommon that you've to make exactly this change during development time. Lists which are hosted on the AppWeb provide less functionality as "traditional" lists (which are located on HostWebs). 
+
 ## JSONLight support in Office365
 
 In August 2014, Microsoft announced the general availability of JSONLight support for SharePoint Online's REST API. JSONLight support is also backed into ShareCoffee. 
