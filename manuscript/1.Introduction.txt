@@ -37,6 +37,8 @@ SharePoint is offering three different shapes for Apps.
   * App Parts
   * Custom Actions
 
+![SharePoint App Shapes](images/introduction/app_types.png)
+
 These three shapes are directly visible to your users. Each App can offer various numbers of items from any shape. Lets review each of the shapes.
 
 ### Immersive Full Page Apps
@@ -59,7 +61,9 @@ Like back in the days of SharePoint 2007 or SharePoint 2010 you'll use either CA
 Microsoft is currently offering two different kinds of Hosting for SharePoint Apps. 
 
 T> ## Autohosted Apps
-T> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option, but Authohosted Apps are already depricated.
+T> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option (When you're still using VS 2013 Update 2), but Authohosted Apps are already depricated.
+
+![SharePoint App Hosting Options](images/introduction/app_hosting_types.png)
 
 ## SharePoint Hosted Apps
 

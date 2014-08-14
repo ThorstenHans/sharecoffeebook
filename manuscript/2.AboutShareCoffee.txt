@@ -42,6 +42,8 @@ In general ShareCoffee is providing features for five main parts of SharePoint A
 
 Most efforts have been invested in providing a great API for dealing with REST requests in SharePoint Apps. CrossDomain offers almost the same functionality but is dedicated to Provider-Hosted App scenarios. Third powerful part of ShareCoffee is UI functionality, the namespace provides for example a single method to load the entire AppChromeBar into your SharePoint App, which is mandatory in order to submit your SharePoint App to the SharePoint Store. There are also a few other UI helper methods included inside of the UI namespace which will be covered in the upcoming chapters.
 
+![ShareCoffee Architecture](images/about_sharecoffee/architecture.png)
+
 For CSOM, ShareCoffee is only providing a few helper methods which are abstracting common functionalities, in order to write CSOM logic even faster and have an API which is good to remember.
 
 Last but not least is ShareCoffee.Commons, Commons has been used to write all the other functionalities, it's really the *Core* of ShareCoffee, but also exposing great methods which will save a lot of time and headache during the phase of developing your Apps. For more information on ShareCoffee.Commons, see the dedicated section in chapter 3.
