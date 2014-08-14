@@ -108,3 +108,11 @@ Extract a single parameter value from the entire QueryString by calling
 T> It's important to point out, that the return value is not decoded
 T> in order to decode it pipe the return value to JavaScript's
 T> decodeURIComponent() method
+
+
+## Use $s to save even more keystrokes
+
+Instead of writing each and every time `ShareCoffee.` you can also use the `$s.` shorthand to access all the ShareCoffee functions and properties.
+
+    var queryString = $s.Commons.getQueryString();
+    console.log(queryString);

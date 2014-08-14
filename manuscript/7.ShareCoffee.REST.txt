@@ -70,3 +70,40 @@ In the sample code above we've only specified a part of the entire url, this is 
     $.ajax(ShareCoffee.REST.build.read.for.jQuery({url: 'web/ContentTypes'}))
     .done(onSuccess)
     .fail(onError);
+
+
+## JSONLight support in Office365
+
+In August 2014, Microsoft announced the general availability of JSONLight support for SharePoint Online's REST API. JSONLight support is also backed into ShareCoffee. 
+
+W> ## Currently no OnPremise support
+W> When writing this book, there were no information on JSONLight support for SharePoint 2013 OnPremise. 
+
+ShareCoffee 0.1.1 is offering an easy way to change REST response style from the default `odata=verbose` to one of the following
+
+  * minimal `odata=minimalmetadata`
+  * no metadata `odata=nometadata`
+
+ShareCoffee is exposing a single property which will control this for all the queries you're executing.
+
+    ShareCoffee.jsonRequestBehavior
+
+`ShareCoffee.jsonRequestBehavior` is defaulting to `odata=verbose` which will also work for all SharePoint OnPremise installations.
+
+See the short sample below, which demonstrates how to use `ShareCoffee.JsonRequestBehaviors` object in order to change the behavior easily
+
+    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.minimal
+    # all requests will send odata=minimalmetadata as Accept header
+
+    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.nometadata
+    # all requests will send odata=nometadata as Accept header
+
+    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.verbose
+    # all requests will send odata=verbose as Accept header
+
+    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.default
+    # all requests will send odata=verbose as Accept header
+
+
+See [this article on blogs.office.com](http://blogs.office.com/2014/08/13/json-light-support-rest-sharepoint-api-released/) which describes how REST responses will reflect this setting.
+    
