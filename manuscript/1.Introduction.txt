@@ -135,9 +135,27 @@ The Premission Masks are mapped to SharePoint actions
 
 |Permission|Included SharePoint Permission|
 |----------|------------------------------|
-|Read|View Items<br/>Open Items<br/>View Versions<br/>Create Alerts<br/>Use Self-Service Site Creation<br/>View Pages|
-|Write|Read permissions plusAdd Items<br/>Edit Items<br/>Delete Items<br/>Delete Versions<br/>Browse Directories<br/>Edit Personal User Information<br/>Manage Personal Views<br/>Add/Remove Personal Web Parts<br/>Update Personal Web Parts|
-|Manage|Write permissions plus Manage Lists<br/>Add and Customize Pages<br/>Apply Themes and Borders<br/>Apply Style Sheets|
+|Read|View Items|
+||Open Items|
+||View Versions|
+||Create Alerts|
+||Use Self-Service Site Creation|
+||View Pages|
+|Write|Read permissions plus|
+||Add Items|
+||Edit Items|
+||Delete Items|
+||Delete Versions|
+||Browse Directories|
+||Edit Personal User Information|
+||Manage Personal Views|
+||Add / Remove Personal Web Parts|
+||Update Personal Web Parts|
+|Manage|Write permissions plus|
+||Manage Lists|
+||Add and Customize Pages|
+||Apply Themes and Borders|
+||Apply Style Sheets|
 |FullControl|All Permissions|
 
 ## App-Only Permissions
