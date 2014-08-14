@@ -28,22 +28,22 @@ In order to support all the following JavaScript frameworks
 You've to specify which framework you're currently using, prefixed by the `for` property
 
     // AngularJS samples
-    ShareCoffee.REST.build.create.for.angularJS()
-    ShareCoffee.REST.build.read.for.angularJS()
-    ShareCoffee.REST.build.update.for.angularJS()
-    ShareCoffee.REST.build.delete.for.angularJS()
+    ShareCoffee.REST.build.create.for.angularJS();
+    ShareCoffee.REST.build.read.for.angularJS();
+    ShareCoffee.REST.build.update.for.angularJS();
+    ShareCoffee.REST.build.delete.for.angularJS();
 
     // jQuery samples
-    ShareCoffee.REST.build.create.for.jQuery()
-    ShareCoffee.REST.build.read.for.jQuery()
-    ShareCoffee.REST.build.update.for.jQuery()
-    ShareCoffee.REST.build.delete.for.jQuery()
+    ShareCoffee.REST.build.create.for.jQuery();
+    ShareCoffee.REST.build.read.for.jQuery();
+    ShareCoffee.REST.build.update.for.jQuery();
+    ShareCoffee.REST.build.delete.for.jQuery();
 
     // reqwest samples
-    ShareCoffee.REST.build.create.for.reqwest()
-    ShareCoffee.REST.build.read.for.reqwest()
-    ShareCoffee.REST.build.update.for.reqwest()
-    ShareCoffee.REST.build.delete.for.reqwest()
+    ShareCoffee.REST.build.create.for.reqwest();
+    ShareCoffee.REST.build.read.for.reqwest();
+    ShareCoffee.REST.build.update.for.reqwest();
+    ShareCoffee.REST.build.delete.for.reqwest();
 
 T> ## IE 8 workaround
 T> IE8 is supported by SharePoint 2013 OnPremise, if you're targeting this browser, you've to replace the **for** property by the **f** shorthand.
@@ -61,12 +61,14 @@ There are two different ways how those properties can be created
 
 `ShareCoffee.REST.RequestProperties` is exposing all the properties that could be used to configure REST requests. Those properties are
 
-  * **url** describes the requested resource
-  * **payload** used for create and update requests for specifying the resource
-  * **hostWebUrl** used when accessing resources from the HostWeb
-  * **eTag** used for Update or Delete queries to deal with concurrency
-  * **onSuccess** can be used to store success callback
-  * **onError** can be used to store error callback
+|Property|Task / Used for|
+|--------|---------------|
+|url|describes the requested resource|
+|payload|used for create and update requests for specifying the resource|
+|hostWebUrl|used when accessing resources from the HostWeb|
+|eTag|used for Update or Delete queries to deal with concurrency|
+|onSuccess|can be used to store success callback|
+|onError|can be used to store error callback|
 
 You can create a new instance from `RequestProperies` using the existing constructor
 
@@ -86,7 +88,7 @@ The second option is using a plain JSON object. **Ensure that property names are
       url: 'web',
       hostWebUrl: ShareCoffee.Commons.getHostWebUrl()
     };
-    
+
 Let's start with a simple example (All the samples assume that you're using jQuery). Let's say you'd like to read all the ContentTypes available on the AppWeb. So by definition it's a **read** operation, ContentTypes are available on web level, so we have to build a REST query which pulls out the ContentTypes from
 
 `https://myapp.mytenant.sharepoint.com/sites/MyTeamSite/MyApp/_api/web/ContentTypes`

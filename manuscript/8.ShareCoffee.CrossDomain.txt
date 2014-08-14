@@ -65,7 +65,8 @@ Passing properties for CrossDomain REST requests is exactly the same as for plai
 
 When browsing MSDN for CrossDomain REST requests which should target the HostWeb, you may stumble upon urls that look like the following
 
-`{SPAppWebUrl}/_api/SP.AppContextSite(@target)/web/lists/GetByTitle('Tasks')/items?@target={SPHostUrl}`
+`{SPAppWebUrl}/_api/SP.AppContextSite(@target)/web/lists/`
+`GetByTitle('Tasks')/items?@target={SPHostUrl}`
 
 which would be way to complicated to construct manually or remember over a timespan for more than a few hours. ShareCoffee is abstracting this for all REST queries where it's required. Once again, also when running CrossDomain, the worst and most verbose configuration would look similar to this
 
