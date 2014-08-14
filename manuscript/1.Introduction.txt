@@ -133,6 +133,8 @@ See the following list of all available scopes and their permissions.
 
 The Premission Masks are mapped to SharePoint actions
 
+{pagebreak}
+
 |Permission|Included SharePoint Permission|
 |----------|------------------------------|
 |Read|View Items|

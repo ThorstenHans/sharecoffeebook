@@ -6,14 +6,16 @@ In order to get CrossDomain support for REST queries working, you've to referenc
 
 SP.RequestExecutor is injecting an hidden IFrame to your website. This hidden IFrame will load an ASPX page from your HostWeb which is responsible for handling all the CrossDomain requests by relying on HTML Post Messages. For you as an App developer, you've to use SP.RequestExecutor instances for executing REST requests in those scenarios.
 
-## Manually activating CrossDomain Support for REST
+## CrossDomain REST
+
+### Manually activating CrossDomain Support for REST
 
 As mentioned in the introduction, you've to reference the `SP.RequestExecutor.js` file from your HostWeb. The entire path to the script can be constructed like this:
 
 `{SPHostUrl}/_layouts/15/SP.RequestExecutor.js`
 
 
-## Activating CrossDomain Support for REST with ShareCoffee
+### Activating CrossDomain Support for REST with ShareCoffee
 
 ShareCoffee is abstracting this manual task. You can use `ShareCoffee.CrossDomain.loadCrossDomainLibrary()` for loading the `SP.RequestExecutor.js` file from the HostWeb. If you're interested in, you can provide callbacks for success and failure to `loadCrossDomainLibrary` as shown in the next code sample.
 
@@ -30,14 +32,14 @@ ShareCoffee is abstracting this manual task. You can use `ShareCoffee.CrossDomai
 
     ShareCoffee.CrossDomain.loadCrossDomainLibrary(onLoaded, onErrorLoading);
 
-## Detecting if CrossDomain Library is already loaded
+### Detecting if CrossDomain Library is already loaded
 
 ShareCoffee is internally tracking if it was able to load the CrossDomain library. Beside tracking this information, you can also use this property witihn your code. You can access this property by using
 
 `ShareCoffee.CrossDomain.crossDomainLibrariesLoaded`
 
 
-## CrossDomain CRUD Operations
+### CrossDomain CRUD Operations
 
 As for plain REST requests is ShareCoffee also offering a fluent API for executing all the various CRUD operations in a CrossDomain environment.
 
@@ -57,11 +59,11 @@ T> ## IE 8 workaround
 T> IE8 is supported by SharePoint 2013 OnPremise, if you're targeting this browser, you've to replace the **for** property by the **f** shorthand.
 T> IE9 is not able to execute a function or access a proprety called **for**
 
-## Providing REST Properties
+### Providing REST Properties
 
 Passing properties for CrossDomain REST requests is exactly the same as for plain REST requests. So you don't have to learn anything new. Remeber, either you can pass a plain JSON object or you can use an instance of `ShareCoffee.REST.RequestProperties`.
 
-## HostWeb Access for CrossDomain REST queries
+### HostWeb Access for CrossDomain REST queries
 
 When browsing MSDN for CrossDomain REST requests which should target the HostWeb, you may stumble upon urls that look like the following
 
@@ -80,7 +82,7 @@ which would be way to complicated to construct manually or remember over a times
 
 Compared to frameworks as jQuery, AngularJS or reqwest, SP.RequestExecutor isn't offering a chained API for handling request callbacks. Therefor it's required to provide those callbacks using the options object. 
 
-## Execute CrossDomain queries with SP.RequestExecutor
+### Execute CrossDomain queries with SP.RequestExecutor
 
 The only missing piece right here is how to use `SP.RequestExecutor`. It's offering a simple handy API which makes executing REST calls in CrossDomain scenarios easy.
 
@@ -97,3 +99,19 @@ The only missing piece right here is how to use `SP.RequestExecutor`. It's offer
     };
     
     e.executeAsync(ShareCoffee.CrossDomain.build.read.for.SPCrossDomainLib(options));
+
+{pagebreak}
+
+## CrossDomain CSOM
+
+### Manually activating CrossDomain Support for CSOM
+
+In order to get CSOM working in a CrossDomain scenario, you've to load three different scripts by adding those references to all your websites manually
+
+`{SPHostUrl}/_layouts/15/SP.Runtime.js`
+`{SPHostUrl}/_layouts/15/SP.js`
+`{SPHostUrl}/_layouts/15/SP.RequestExecutor.js`
+
+
+### Activating CrossDomain Support for CSOM with ShareCoffee
+
