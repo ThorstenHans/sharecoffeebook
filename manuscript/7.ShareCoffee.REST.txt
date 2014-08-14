@@ -54,6 +54,39 @@ T> IE9 is not able to execute a function or access a proprety called **for**
 
 Now you've seen ShareCoffee's entire API, there is only one thing missing : The REST operation configuration. ShareCoffee is providing some cool features, which will help you building exactly these configurations.
 
+There are two different ways how those properties can be created
+
+  * using `ShareCoffee.REST.RequestProperties` object
+  * using a plain JSON object
+
+`ShareCoffee.REST.RequestProperties` is exposing all the properties that could be used to configure REST requests. Those properties are
+
+  * **url** describes the requested resource
+  * **payload** used for create and update requests for specifying the resource
+  * **hostWebUrl** used when accessing resources from the HostWeb
+  * **eTag** used for Update or Delete queries to deal with concurrency
+  * **onSuccess** can be used to store success callback
+  * **onError** can be used to store error callback
+
+You can create a new instance from `RequestProperies` using the existing constructor
+
+
+    var options = new ShareCoffee.REST.RequestProperties(
+      url, 
+      payload,
+      hostWebUrl, 
+      eTag, 
+      onSuccess, 
+      onError
+    );
+
+The second option is using a plain JSON object. **Ensure that property names are matching the property names from `ShareCoffee.REST.RequestProperties`**.
+
+    var options = {
+      url: 'web',
+      hostWebUrl: ShareCoffee.Commons.getHostWebUrl()
+    };
+    
 Let's start with a simple example (All the samples assume that you're using jQuery). Let's say you'd like to read all the ContentTypes available on the AppWeb. So by definition it's a **read** operation, ContentTypes are available on web level, so we have to build a REST query which pulls out the ContentTypes from
 
 `https://myapp.mytenant.sharepoint.com/sites/MyTeamSite/MyApp/_api/web/ContentTypes`
@@ -171,6 +204,7 @@ T> When accessing resources from the HostWeb, you've to explicitly request permi
 
 
 As you can see, you don't have to make many changes in order to move queries targeting the AppWeb to the HostWeb. This is a huge advantage of ShareCoffee. In real customer driven projects it's not uncommon that you've to make exactly this change during development time. Lists which are hosted on the AppWeb provide less functionality as "traditional" lists (which are located on HostWebs). 
+
 
 ## JSONLight support in Office365
 
