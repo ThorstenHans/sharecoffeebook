@@ -6,7 +6,7 @@ T> ## Provider-Hosted Apps
 T> If you're writing a Provider-Hosted App, you should review the
 T> ShareCoffee.CrossDomain Namespace, there is also some small CSOM support inside of the CrossDomain Namespace.
 
-## ShareCoffee.CSOM.getHostWeb()
+## CSOM.getHostWeb()
 
 When writing SharePoint-Hosted Apps you're often faced with the requirement to interact with data sitting in the HostWeb. You can use `ShareCoffee.CSOM.getHostWeb` in order to access data sitting in your HostWeb.
 

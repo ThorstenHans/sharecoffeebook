@@ -2,7 +2,7 @@
 
 Commons is exposing a lot of great functionality, that you can use within your App to gather required information about the current context.
 
-##ShareCoffee.Commons.getAppWebUrl()
+##Commons.getAppWebUrl()
 
 As the name implies, you can ask for the current AppWeb url by simply executing
 
@@ -35,7 +35,7 @@ But there are scenarios when you as a developer are going to store the AppWeb ur
 
 
 
-##ShareCoffee.Commons.getHostWebUrl()
+##Commons.getHostWebUrl()
 
 `getHostWebUrl()` can be used in exactly the same way as `getAppWebUrl()`. By default this method is extracting the HostWeb url from the current QueryString.
 
@@ -60,7 +60,7 @@ As the same for `getAppWebUrl()` you can inject either a string or a custom func
     console.log(hostWebUrl);
     // will print https://sample.sharepoint.com/sites/sample2"
 
-##ShareCoffee.Commons.getApiRootUrl()
+##Commons.getApiRootUrl()
 
 `getApiRootUrl()` is mostly used internally to construct REST urls. It's returning the combination of `getAppWebUrl()` and `/_api/`.
 
@@ -68,7 +68,7 @@ As the same for `getAppWebUrl()` you can inject either a string or a custom func
     console.log(apiRootUrl);
     // will print https://sample.sharepoint.com/appweb/_api/
 
-##ShareCoffee.Commons.getFormDigest()
+##Commons.getFormDigest()
 
 `getFormDigest()` is one of the important helper methods when working with REST operations. Because SharePoint is doing request validations for all requests that create, update or delete data from SharePoint, a Form Digest value has to be passed to each of the REST requests.
 
@@ -89,7 +89,7 @@ you've to manually request a FormDigest value and pass it aside your REST reques
 It's also watching an injection point 'ShareCoffee.Commons.formDigestValue' where you can hook your custom logic to request a new FormDigest value from SharePoint's REST endpoint. [Read this article on my blog which describes how to request a FormDigest value on the fly](http://dotnet-rocks.com/2014/01/28/query-formdigestvalue-from-sharepoint-using-sharecoffee/).
 
 
-##ShareCoffee.Commons.getQueryString()
+##Commons.getQueryString()
 
 If you're interested in the entire QueryString (which is appended to the current url), use
 
@@ -99,7 +99,7 @@ If you're interested in the entire QueryString (which is appended to the current
     console.log(queryString);
     // will print something like SPHostUrl=foo....
 
-##ShareCoffee.Commons.getQueryStringParameter()
+##Commons.getQueryStringParameter()
 
 Extract a single parameter value from the entire QueryString by calling
 

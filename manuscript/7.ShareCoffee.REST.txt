@@ -234,16 +234,20 @@ See the short sample below, which demonstrates how to use
 
 `ShareCoffee.JsonRequestBehaviors` object in order to change the behavior easily
 
-    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.minimal
+    ShareCoffee.jsonRequestBehavior = 
+        ShareCoffee.JsonRequstBehaviors.minimal;
     // all requests will send odata=minimalmetadata as Accept header
 
-    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.nometadata
+    ShareCoffee.jsonRequestBehavior = 
+        ShareCoffee.JsonRequstBehaviors.nometadata;
     // all requests will send odata=nometadata as Accept header
 
-    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.verbose
+    ShareCoffee.jsonRequestBehavior = 
+        ShareCoffee.JsonRequstBehaviors.verbose;
     // all requests will send odata=verbose as Accept header
 
-    ShareCoffee.jsonRequestBehavior = ShareCoffee.JsonRequstBehaviors.default
+    ShareCoffee.jsonRequestBehavior = 
+        ShareCoffee.JsonRequstBehaviors.default;
     // all requests will send odata=verbose as Accept header
 
 

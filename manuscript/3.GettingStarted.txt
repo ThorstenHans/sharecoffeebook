@@ -89,7 +89,8 @@ You can find the Default.aspx underneath **Pages** open it by double-clicking it
 
 Load ShareCoffee right here by referencing the minified ShareCoffee JavaScript file
 
-    <script type="text/javascript" src="../Scripts/ShareCoffee/ShareCoffee.min.js">
+    <script type="text/javascript" 
+            src="../Scripts/ShareCoffee/ShareCoffee.min.js">
     </script>
 
 Within the **PlaceHolderMain Content Control** remove all the content and replace it with the following HTML
@@ -113,8 +114,10 @@ Within the **PlaceHolderMain Content Control** remove all the content and replac
 Finally the JavaScript logic has to be changed, open the App.js file by double-clicking it. (It's located in the Scripts folder). Delete **all the content** from the JavaScript file and write the following few lines of JavaScript code.
 
     $(document).ready(function() {
+
       $("#appWebUrl").text(ShareCoffee.Commons.getAppWebUrl());
       $("#hostWebUrl").text(ShareCoffee.Commons.getHostWebUrl());
+      
       $("#apiRootUrl").text(ShareCoffee.Commons.getApiRootUrl());
       $("#formDigest").text(ShareCoffee.Commons.getFormDigest());
     });
