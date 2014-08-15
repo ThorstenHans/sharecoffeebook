@@ -24,12 +24,16 @@ As true for all AddOns, you've to explicitly install it either by using **NuGet*
 Next you've to load all the required script files within your website
 
     <!-- for the minified version -->
-    <script type='text/javascript' src="../Scripts/ShareCoffee/ShareCoffee.min.js"></script>
-    <script type='text/javascript' src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.min.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee/ShareCoffee.min.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.min.js"></script>
 
     <!-- or for the debug version -->
-    <script type='text/javascript' src="../Scripts/ShareCoffee/ShareCoffee.js"></script>
-    <script type='text/javascript' src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee/ShareCoffee.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.js"></script>
 
 Once the package is installed and scripts are referenced, you can start exploring it's API. All AddOns are populating REST endpoint urls at `ShareCoffee.Url`, for search the available properties are
 
@@ -72,7 +76,7 @@ As you can see in the sample, `ShareCoffee.REST` has now a dedicated property ca
 Executing a PostQurey is nothing special, to make this sample a bit more interesting, you'll see how to execute a PostQuery in conjunction with SharePoint's CrossDomain library.
 
     //load SharePoint's CrossDomain Library
-    ShareCoffee.CrossDomain.loadCrossDomainLibrary(onCrossDomainLibLoaded, function(){
+    $s.CrossDomain.loadCrossDomainLibrary(onCrossDomainLibLoaded, function(){
       console.log("Error loading CrossDomain lib")  
     });
  
@@ -89,7 +93,8 @@ Executing a PostQurey is nothing special, to make this sample a bit more interes
       }
 
       var e = new SP.RequestExecutor(ShareCoffee.Commons.getAppWebUrl());
-      e.executeAsync(ShareCoffee.CrossDomain.Search.build.postQuery.for.SPCrossDomainLib(p));
+      e.executeAsync(ShareCoffee.CrossDomain.Search.
+          build.postQuery.for.SPCrossDomainLib(p));
     };
 
 
