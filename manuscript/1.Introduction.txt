@@ -16,6 +16,7 @@ Some of these issues are
   * Remove custom code from SharePoint Servers
   * Provide scalable architectures for OnDemand, OnPremise and Hybrid scenarios
 
+{pagebreak}
 
 ## App Isolation
 
@@ -25,8 +26,6 @@ Of course can you create lists on the SharePoint site where you've installed the
 
   * Search
   * User Profile Store
-
-{pagebreak}
 
 As long as your App will only work with SharePoint-Items (SP-Is) within the boundaries of your AppWeb, you don't have to care about permissions. For more information on App Permissions, see the corresponding section in this chapter.
 
@@ -45,6 +44,8 @@ SharePoint is offering three different shapes for Apps.
 ![SharePoint App Shapes](images/introduction/app_types.png)
 
 These three shapes are directly visible to your users. Each App can offer various numbers of items from any shape. Lets review each of the shapes.
+
+{pagebreak}
 
 ### Immersive Full Page Apps
 
@@ -66,9 +67,6 @@ Like back in the days of SharePoint 2007 or SharePoint 2010 you'll use either CA
 
 Microsoft is currently offering two different kinds of Hosting for SharePoint Apps. 
 
-I> ## Autohosted Apps
-I> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option (When you're still using VS 2013 Update 2), but Authohosted Apps are already depricated.
-
 ![SharePoint App Hosting Options](images/introduction/app_hosting_types.png)
 
 ## SharePoint Hosted Apps
@@ -89,6 +87,13 @@ Both languages are compiling into the *Good Parts of JavaScript* and again, thes
 For serious Apps you'll definetley consider building a Provider-Hosted-App instead of a SharePoint-Hosted App. Provider-Hosted Apps are powered by native web applications, which are integrated into SharePoint. Most important aspect here is, that your code will not run on a SharePoint box. As the name implies are you - as a Solution Provider - responsible for hosting your App. It's totally up to you if you're relying on servers sitting in your data center, web servers hosted by your customers or if you bet on Microsoft Azure. 
 
 Visual Studio allows you as a developer to create either an ASP.NET WebForms Application or an ASP.NET MVC Application when building Provider-Hosted Apps for SharePoint. But of course can you use any programming language to do so. If you're familiar with Node.JS or RubyOnRails, you can use any of them to build your App's backend. 
+
+I> ## Autohosted Apps
+I> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option (When you're still using VS 2013 Update 2), but Authohosted Apps are already depricated.
+
+
+{pagebreak}
+
 
 ## OAuth 2.0
 
