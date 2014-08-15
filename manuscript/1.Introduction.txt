@@ -26,9 +26,14 @@ Of course can you create lists on the SharePoint site where you've installed the
   * Search
   * User Profile Store
 
+{pagebreak}
+
 As long as your App will only work with SharePoint-Items (SP-Is) within the boundaries of your AppWeb, you don't have to care about permissions. For more information on App Permissions, see the corresponding section in this chapter.
 
 ![SharePoint App Isolation (Dedicated Webs for each App Instance)](images/introduction/app_isolation.png)
+
+{pagebreak}
+
 ## App Shapes
 
 SharePoint is offering three different shapes for Apps. 
@@ -55,13 +60,14 @@ Custom Actions are small UI components which can be hooked into different. prede
 
 Like back in the days of SharePoint 2007 or SharePoint 2010 you'll use either CAML or given Designers in Visual Studio in order to create Custom Actions.
 
+{pagebreak}
 
 ## App Hosting Types
 
 Microsoft is currently offering two different kinds of Hosting for SharePoint Apps. 
 
-T> ## Autohosted Apps
-T> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option (When you're still using VS 2013 Update 2), but Authohosted Apps are already depricated.
+I> ## Autohosted Apps
+I> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option (When you're still using VS 2013 Update 2), but Authohosted Apps are already depricated.
 
 ![SharePoint App Hosting Options](images/introduction/app_hosting_types.png)
 
@@ -89,6 +95,8 @@ Visual Studio allows you as a developer to create either an ASP.NET WebForms App
 SharePoint 2013 and SharePoint Online are by default using [OAuth 2.0](http://oauth.net/2/) in order to deal with security and authorization. One of the most important aspecs of OAuth2.0 is that all the pieces from your App (all the relying parties) have to communicate over HTTPS **without any exception**. As described in OAuth2.0 specs, apps can either request access in behalf of a user (in such a case SharePoint is dealing with both, an UserContext and an AppContext), or Apps can also request access to resources without being controlled by an user (SharePoint is only dealing with an AppContext).
 
 In OAuth2.0 secured scenarios, applications have to request permissions for each and every resource they'd like to access. By accessing all crud operations are ment. (Create|Read|Update|Delete). Instead of dealing with user credentials OAuth2.0 relies on Tokens which are exchanged by SharePoint and your app. This reduces the pain of storing passwords and user information inside of your App. Another great advantage from using OAuth2.0 is management. SharePoint Administrators are able to revoke access for each and every App in no time. 
+
+{pagebreak}
 
 ## App Permissions
 
