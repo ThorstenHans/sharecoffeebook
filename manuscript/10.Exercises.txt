@@ -1,0 +1,7 @@
+#Let's build a SearchCenter App
+
+#Let's build a TaskManagement App (AppWeb)
+
+#Let's build a TaskManagement App (HostWeb)
+
+#Let's build a ProviderHosted SearchCenter
