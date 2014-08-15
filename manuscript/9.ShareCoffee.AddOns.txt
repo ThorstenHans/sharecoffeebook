@@ -143,6 +143,7 @@ Next you've to load all the required script files within your website
 
 Once the package is installed and scripts are referenced, you can start exploring it's API. All AddOns are populating REST endpoint urls at `ShareCoffee.Url`, for search the available properties are
 
+
 |Property|Url that will be returned|
 |--------|-------------------------|
 |ShareCoffee.Url.SetMyProfilePicture |SP.UserProfiles.PeopleManager/SetMyProfilePicture|
@@ -151,6 +152,7 @@ Once the package is installed and scripts are referenced, you can start explorin
 GetPropertiesFor(accountName=@v)?@v=|
 |ShareCoffee.Url.GetUserProfileProperty|SP.UserProfiles.PeopleManager/
 GetUserProfilePropertyFor(accountName=@v, propertyName=@p)?@v=&@p=|
+
 
 ## Receiving current users Properties
 
