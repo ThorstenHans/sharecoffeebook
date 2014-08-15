@@ -80,11 +80,11 @@ W> The NuGet Packaging Tool is currently only available on Windows systems. Ther
 W> a Mono port from NuGet command line tool, but it's not working as expected if you pipe various arguments to the command line interface
 W> Therefore it's important that you generate the NuGet Packages on a Windows Machine!
 
-
+{pagebreak}
 
 ## Bugs / Feature Requests
 
 As mentioned earlier, ShareCoffee is hosted on github. When it comes to collaboration based on development projects, github is awesome. That's the reason why I've decided to use github not only for hosting the code. Also all the feature requests, bugs, questions from other developers where housed within ShareCoffee's repository. If you have any kind of question / bug / feature request for ShareCoffee
 [visit the repositories issue list](https://github.com/ShareCoffee/ShareCoffee/issues) and use github issues to collaborate with me or with other ShareCoffee users out there.
 
-![Use gitub's issue list for bugs or feature requests](images/aboute_sharecoffee/github_issues.png)
+![Use gitub's issue list for bugs or feature requests](images/about_sharecoffee/github_issues.png)
