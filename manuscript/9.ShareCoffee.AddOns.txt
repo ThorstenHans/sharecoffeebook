@@ -146,12 +146,10 @@ Once the package is installed and scripts are referenced, you can start explorin
 
 |Property|Url that will be returned|
 |--------|-------------------------|
-|ShareCoffee.Url.SetMyProfilePicture |SP.UserProfiles.PeopleManager/SetMyProfilePicture|
-|ShareCoffee.Url.GetMyProperties |SP.UserProfiles.PeopleManager/GetMyProperties|
-|ShareCoffee.Url.GetProperties  |SP.UserProfiles.PeopleManager/
-GetPropertiesFor(accountName=@v)?@v=|
-|ShareCoffee.Url.GetUserProfileProperty|SP.UserProfiles.PeopleManager/
-GetUserProfilePropertyFor(accountName=@v, propertyName=@p)?@v=&@p=|
+|ShareCoffee.Url.SetMyProfilePicture|SP.UserProfiles.PeopleManager/SetMyProfilePicture|
+|ShareCoffee.Url.GetMyProperties|SP.UserProfiles.PeopleManager/GetMyProperties|
+|ShareCoffee.Url.GetProperties|SP.UserProfiles.PeopleManager/ GetPropertiesFor(accountName=@v)?@v= |
+|ShareCoffee.Url.GetUserProfileProperty|SP.UserProfiles.PeopleManager/GetUserProfilePropertyFor(accountName=@v, propertyName=@p)?@v=&@p= |
 
 
 ## Receiving current users Properties
