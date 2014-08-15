@@ -230,6 +230,7 @@ When executing this command npm will check your system and install all the depen
 
     npm install -g generator-sharecoffee-addon
 
+## The MyFirstAddOn AddOn
 At this point you’re able to start with your new Add-On. So let’s create a new directory for our Add-On
 
     #go to your development folder
@@ -254,5 +255,55 @@ Again it’ll pull down all the project related dependencies and install them in
 
 ![yeoman generator output](images/addons/yo_generator_output.png)
 
+What are all these files and folder? Well, all these files and folders form up an increadible development stack. See this list of folders and their responsibility
 
+|Folder|Responsibility|
+|------|--------------|
+|src|all your AddOn source have to be located in this folder|
+|test|all unit-tests belong to this folder|
+|bower_components|Installed client side dependencies|
+|dist|Will contain the compiled AddOn|
+|license|Contains a license file for your AddOn|
+|docs|Will contain a complete documentation (annotated source) for your AddOn|
+|node_modules|Contains all the dependencies for development time|
+|nuget|Will contain generated nuget packages|
+
+There are also a ton of files, which ones should you care about? Check this list
+
+|File|Responsibility|
+|----|--------------|
+|.editorconfig|Many editors and IDE's provide an EditorConfig AddOn, which takes care about tabs, spaces and indentions (this makes team-development more easy)|
+|.gitignore|defines common files which should not be stored in source control|
+|.jshintrc| JS hint configuration|
+|bower.json|defines clientside dependencies for bower.io|
+|Gruntfile.coffee|The most important file! This file describes all the available grunt tasks (next section) which can be invoked from command line in order to invoke common tasks|
+|package.json|defines all the dependencies for development time|
+|Readme.md|This is just a simple readme (will provide a nice description site on github for example)|
+|readme.txt|When installing your AddOn using NuGet in Visual Studio, this readme will automatically be opened|
+|ShareCoffee.MyFirstAddOn.nuspec|NuGet package specification file|
+
+`Gruntfile.coffee` defines some jobs that can be invoked using `grunt-cli`. See the following list of available commands. 
+
+
+|Command|Action that will be executed|
+|-------|----------------------------|
+|build(default)|Runs all unit tests, updates the documentation, compiles CoffeeScript to JavaScript, Minifies all the JavaScript, generates the NuGet Package as specified in the NuSpec file|
+|test|Runs all the unit tests|
+|docs|Updates the documentation|
+
+Each of these commands can be invoked by piping it as first argument to the **grunt** executable.
+
+    # build the AddOn
+    grunt build
+    # or (because it's the default task)
+    grunt
+
+    # only run unit tests
+    grunt test
+
+    # only update the docs
+    grunt docs
+
+
+By default the AddOn generator also provide some sample code and a sample UnitTest for you. Just review the source file at `src/ShareCoffee.MyFirstAddOn.coffee` and check out the sample UnitTest at `test/ShareCoffee.MyFirstAddOn.tests.coffee`.
 
