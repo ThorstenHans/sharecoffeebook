@@ -109,12 +109,13 @@ As the same for notification this method will also return the identifier of the 
 
     var title = "ShareCoffee Status";
     var message "This is just a simple status update";
-    var statusId = ShareCoffee.UI.showStatus(title, message, false, 'yellow');
+    var sId = ShareCoffee.UI.showStatus(title, message, false, 'yellow');
 
 
 ### ShareCoffee.UI.setStatusColor()
 
 Once you've created a status message and you've stored it's status-identifer in a variable you can change the color of that particular status by invoking
+
 `ShareCoffee.UI.setStatusColor()`. There are two required parameters for this method
 
 |Name|DataType|Further Information|
@@ -122,17 +123,16 @@ Once you've created a status message and you've stored it's status-identifer in 
 |StatusId|String|Identifer from the status you'd like to alter|
 |Color|String|New color value again one of the following (blue red yellow)|
 
-    ShareCoffee.UI.setStatusColor(statusId, 'red');
+    ShareCoffee.UI.setStatusColor(sId, 'red');
 
  If you pass null or undefined as a value for statusId, ShareCoffee will not call SharePoint's internal scripts, because this would result in another exception, so again it's making your code even more robust.
 
-{pagebreak}
 
 ### ShareCoffee.UI.removeStatus()
 
 The `removeStatus()` method will receive a single parameter which is the statusId. Again no call will be forwarded to SharePoint if you pass null or undefined.
 
-    ShareCoffee.UI.removeStatus(statusId);
+    ShareCoffee.UI.removeStatus(sId);
 
 ### ShareCoffee.UI.removeAllStatus()
 

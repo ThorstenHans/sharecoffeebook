@@ -100,7 +100,6 @@ The only missing piece right here is how to use `SP.RequestExecutor`. It's offer
     
     e.executeAsync(ShareCoffee.CrossDomain.build.read.for.SPCrossDomainLib(options));
 
-{pagebreak}
 
 ## CrossDomain CSOM
 
