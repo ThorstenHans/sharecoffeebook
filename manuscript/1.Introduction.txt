@@ -28,7 +28,7 @@ Of course can you create lists on the SharePoint site where you've installed the
 
 As long as your App will only work with SharePoint-Items (SP-Is) within the boundaries of your AppWeb, you don't have to care about permissions. For more information on App Permissions, see the corresponding section in this chapter.
 
-
+![SharePoint App Isolation (Dedicated Webs for each App Instance)](images/introduction/app_isolation.png)
 ## App Shapes
 
 SharePoint is offering three different shapes for Apps. 
