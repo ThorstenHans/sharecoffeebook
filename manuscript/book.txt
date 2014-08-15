@@ -8,3 +8,4 @@
 7.ShareCoffee.REST.txt
 8.ShareCoffee.CrossDomain.txt
 9.ShareCoffee.AddOns.txt
+10.Exercises.txt

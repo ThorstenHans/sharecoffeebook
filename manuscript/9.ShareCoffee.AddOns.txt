@@ -145,10 +145,12 @@ Once the package is installed and scripts are referenced, you can start explorin
 
 |Property|Url that will be returned|
 |--------|-------------------------|
-|ShareCoffee.Url.SetMyProfilePicture |`SP.UserProfiles.PeopleManager/SetMyProfilePicture`|
-|ShareCoffee.Url.GetMyProperties |`SP.UserProfiles.PeopleManager/GetMyProperties`|
-|ShareCoffee.Url.GetProperties  |`SP.UserProfiles.PeopleManager/`<br/>`GetPropertiesFor(accountName=@v)?@v=`|
-|ShareCoffee.Url.GetUserProfileProperty  |`SP.UserProfiles.PeopleManager/`<br/>`GetUserProfilePropertyFor(accountName=@v, propertyName=@p)?@v=&@p=`|
+|ShareCoffee.Url.SetMyProfilePicture |SP.UserProfiles.PeopleManager/SetMyProfilePicture|
+|ShareCoffee.Url.GetMyProperties |SP.UserProfiles.PeopleManager/GetMyProperties|
+|ShareCoffee.Url.GetProperties  |SP.UserProfiles.PeopleManager/
+GetPropertiesFor(accountName=@v)?@v=|
+|ShareCoffee.Url.GetUserProfileProperty|SP.UserProfiles.PeopleManager/
+GetUserProfilePropertyFor(accountName=@v, propertyName=@p)?@v=&@p=|
 
 ## Receiving current users Properties
 
@@ -192,9 +194,10 @@ Depending on your environment, you can find useful information about users by qu
 
     loadUserProfilePropertyFor(myOffice365LoginName, "WorkEmail");
 
- ## Updating ProfilePicture
 
- Updating the current users profile picture is pretty easy. You just have to construct a post request and configure it using the existing class `ShareCoffee.ProfilePictureProperties` as demonstrated below
+## Updating ProfilePicture
+
+Updating the current users profile picture is pretty easy. You just have to construct a post request and configure it using the existing `ShareCoffee.ProfilePictureProperties` class as demonstrated below
 
      var newUserPictureStream = getPictureStreamFromSomewhere();
 

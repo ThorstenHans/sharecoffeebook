@@ -18,8 +18,8 @@ As mentioned in the introduction, you've to reference the `SP.RequestExecutor.js
 ### Activating CrossDomain Support for REST with ShareCoffee
 
 ShareCoffee is abstracting this manual task. You can use 
-
-`ShareCoffee.CrossDomain.loadCrossDomainLibrary()` for loading the `SP.RequestExecutor.js` file from the HostWeb. If you're interested in, you can provide callbacks for success and failure to `loadCrossDomainLibrary` as shown in the next code sample.
+`ShareCoffee.CrossDomain.loadCrossDomainLibrary()` for loading the 
+`SP.RequestExecutor.js` file from the HostWeb. If you're interested in, you can provide callbacks for success and failure to `loadCrossDomainLibrary` as shown in the next code sample.
 
     var onLoaded = function(){
         console.log("SharePoint's CrossDomain Library for REST loaded");
