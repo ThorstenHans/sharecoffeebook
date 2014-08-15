@@ -108,10 +108,85 @@ The only missing piece right here is how to use `SP.RequestExecutor`. It's offer
 
 In order to get CSOM working in a CrossDomain scenario, you've to load three different scripts by adding those references to all your websites manually
 
-`{SPHostUrl}/_layouts/15/SP.Runtime.js`
-`{SPHostUrl}/_layouts/15/SP.js`
-`{SPHostUrl}/_layouts/15/SP.RequestExecutor.js`
+  * `{SPHostUrl}/_layouts/15/SP.Runtime.js`
+  * `{SPHostUrl}/_layouts/15/SP.js`
+  * `{SPHostUrl}/_layouts/15/SP.RequestExecutor.js`
 
 
 ### Activating CrossDomain Support for CSOM with ShareCoffee
+
+As for CrossDomain REST libraries, there is also a single method which can be invoked in order to load all the required CrossDomain libraries for CSOM. `ShareCoffee.CrossDomain.loadCSOMCrossDomainLibraries()` can also carry a callback for success and failure as parameter.
+
+    var onLibrariesLoaded = function(){
+        goAndReadSomeDataUsingCSOM();
+        goAndWriteSomeDataUsingCSOM();
+    };
+
+    var onFailure = function(){
+        console.log("Error while loading CSOM CrossDomain libraries");
+    };
+
+    ShareCoffee.CrossDomain.loadCSOMCrossDomainLibraries(onLibrariesLoaded, onFailure);
+
+You can also use the `ShareCoffee.CrossDomain.crossDomainLibrariesLoaded` property in order to detect if the CrossDomain libs have already been loaded by ShareCoffee. 
+
+
+## Requesting the CSOM ClientContext
+
+Receiving the ClientContext means for a CrossDomain scenario that you've to issue a new instance of `SP.ProxyWebRequestExecutorFactory` which is also handled by ShareCoffee for you the `ShareCoffee.CrossDomain.getClientContext` method checks if CSOM libraries are loaded for CrossDomain. If so, it'll instanciate a valid ClientContext instance for you which allows you to focus on your work directly.
+
+
+    var getUserName = function(){
+        var ctx = ShareCoffee.CrossDomain.getClientContext();
+        var user = ctx.get_web().get_currentUser();
+        ctx.load(user);
+        ctx.executeQueryAsync(function()
+        {
+            $("#user-name").val(user.get_title());
+        }, 
+        function(sender,args){
+            console.log(args.get_message() + " " + args.get_stackTrace());
+        });
+
+    };
+
+    ShareCoffee.CrossDomain.loadCSOMCrossDomainLibraries(getUserName, onFailure);
+
+
+The ClientContext you're receiving by `getClientContext` is always targeting the AppWeb, if you're interested in accessing data form the HostWeb, you've to use `getHostWeb` as described in the upcoming section.
+
+
+## Accessing the HostWeb using CSOM in CrossDomain
+
+T> ## Don't forget the permissions
+T> When accessing resources from the HostWeb, you've to explicitly request permissions for those resources. If you're not aware of permissions for SharePoint Apps, review Chapter 1, there is a dedicated section on SharePoint App Permissions.
+
+If you're interested in HostWeb data, as for example all the tasks from a task-list, you've to use the combination of all the methods shown before and `getHostWeb` which will look like this
+    
+    var onTasksReceived = function(tasks){
+        var enumerator = tasks.getEnumerator();
+        while(enumerator.moveNext()){
+            var currentTask = enumerator.get_current();
+            // print task to website
+        }
+    };
+
+    var getTasks = function(){
+        var ctx = ShareCoffee.CrossDomain.getClientContext();
+        var hostWeb = ShareCoffee.CrossDomain.getHostWeb(ctx);
+        var items = hostWeb.get_lists().getByTitle("Tasks").getItems(CamlQuery.createAllItemsQuery());
+        ctx.load(items);
+        ctx.executeQueryAsync(onTasksReceived, function(sender,args){
+            console.log("Error while loading tasks from the HostWeb " + args.get_message());
+        });
+    };
+
+    ShareCoffee.CrossDomain.loadCSOMCrossDomainLibraries(getTasks, onFailure);
+
+The `getHostWeb` method is offering two parameters, first there is the `ClientContext` which is required. The second parameter is the HostWebUrl you're interested in. By default it's using your Apps HostWebUrl, but imagine you'd like to query all the blog entries from a subweb, located within the original HostWeb, your call will look like this
+
+    var blogUrl = ShareCoffee.Commons.getHostWebUrl() + "/myblog/";
+    ShareCoffee.CrossDomain.getHostWeb(ctx, blogUrl);
+
+
 
