@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="query-text" class="col-sm-2 control-label">Search:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="query-text" placeholder="Put your QueryText here..." />
+            </div>
+            <div class="col-sm-2">
+                <button id="do-search" type="button">Go and find!</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-danger display-none">
+        <div class="panel-heading">
+            <h3 class="panel-title">Error while querying Search</h3>
+        </div>
+        <div class="panel-body">
+            <span id="search-error"></span>
+        </div>
+    </div>
+    <div>
+        <hr />
+    </div>
+    <div id="results" class="row"></div>
+</div>

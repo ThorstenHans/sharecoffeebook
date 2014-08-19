@@ -1,0 +1,11 @@
+.display-none {
+    display: none;
+}
+
+.container {
+    margin-top: 35px;
+}
+
+.panel-default:hover {
+    background-color: #1e90ff;
+}
