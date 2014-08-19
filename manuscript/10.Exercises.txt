@@ -96,7 +96,110 @@ The entire source-code for this example can be downloaded [here](http://foo/bar)
 
 #Let's build a TaskManagement App (AppWeb)
 
+This sample will demonstrate how to use ShareCoffee in order to build a simple TaskManagement App for SharePoint (Online) which uses a Task-List from the AppWeb as datastorage. 
+
+Again open Visual Studio and create a new SharePoint AppProject
+
+|Setting|Value|
+|-------|-----|
+|Project Name|AppWebTaskManager|
+|Developer Site Url|Path to your developer site|
+|Hosting Type|SharePoint Hosted App|
+
+Once the App has been created, again install the dependencies using NuGet Package Manager
+
+  * ShareCoffee
+  * Bootstrap
+
+## Creating the Task List
+
+Right-Click the App Projekt from the SolutionExplorer and select **Add Item** from the ContextMenu. From the dialog choose **List** and provide **Tasks** as the name. And use the following list settings:
+
+![images/exercises/TasksAppAppWeb/list_seetings.png]
+
+## Coding the App
+
+Again the App will again be built from three core components
+
+  * The App UI (default.aspx)
+  * The App Script (app.js)
+  * The App Styles (app.css)
+
+
+### The App UI
+
+In order to get everything working you've again to add references to all the stylesheets and script files
+
+
+### The App Script
+
+Open the App.js file from the scripts folder and replace it's content with the following source.
+
+### The App Styles
+
+Again, to fix some style bugs insert the following stylesheets in App.css (which is located in your Apps content directory).
+
+### Executing the App
+
+When executing the App, it should render your TaskManagement App like the following.
+
+### Download the Source
+
+The entire source-code for this example can be downloaded [here](http://foo/bar)
+
 #Let's build a TaskManagement App (HostWeb)
+
+This sample will provide a similar experience as the TaskManagement App based on the AppWeb. Instead of relying on the AppWeb, this sample will be based on the HostWeb in order to make use of all the standard Task-List features which SharePoint as a platform provides. 
+
+Again open Visual Studio and create a new SharePoint AppProject
+
+|Setting|Value|
+|-------|-----|
+|Project Name|AppWebTaskManager|
+|Developer Site Url|Path to your developer site|
+|Hosting Type|SharePoint Hosted App|
+
+Once the App has been created, again install the dependencies using NuGet Package Manager
+
+  * ShareCoffee
+  * Bootstrap
+
+## App Permission
+
+In order to access the data from the HostWeb, your App must request manage permissions for the **Web** scope. **Manage** is required, because our App will check if there is a Tasks list on the HostWeb, if not so, it'll automatically create one.
+
+![images/exercises/TasksAppHostWeb/app_permissions.png]
+
+## Coding the App
+
+Again the App will again be built from three core components
+
+  * The App UI (default.aspx)
+  * The App Script (app.js)
+  * The App Styles (app.css)
+
+
+### The App UI
+
+In order to get everything working you've again to add references to all the stylesheets and script files
+
+
+### The App Script
+
+Open the App.js file from the scripts folder and replace it's content with the following source.
+
+### The App Styles
+
+Again, to fix some style bugs insert the following stylesheets in App.css (which is located in your Apps content directory).
+
+### Executing the App
+
+When executing the App, it will ask you if you trust the TaskManagement App, if so it should render your TaskManagement App like the following.
+![HostWeb TaskManagement App](imagees/exercises/TasksAppHostWeb/final_app.png)
+
+## Download the Source
+
+The entire source-code for this example can be downloaded [here](http://foo/bar)
 
 #Let's build a ProviderHosted SearchCenter
 
