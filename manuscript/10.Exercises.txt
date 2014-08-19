@@ -130,14 +130,19 @@ Again the App will again be built from three core components
 
 In order to get everything working you've again to add references to all the stylesheets and script files
 
+<<[Default.aspx code](code/exercises/taskappappweb/default.html)
 
 ### The App Script
 
 Open the App.js file from the scripts folder and replace it's content with the following source.
 
+<<[App.js code](code/exercises/taskappappweb/app.js)
+
 ### The App Styles
 
 Again, to fix some style bugs insert the following stylesheets in App.css (which is located in your Apps content directory).
+
+<<[App.css stylesheets](code/exercises/taskappappweb/app.css)
 
 ### Executing the App
 
@@ -183,14 +188,19 @@ Again the App will again be built from three core components
 
 In order to get everything working you've again to add references to all the stylesheets and script files
 
+<<[Default.aspx code](code/exercises/taskapphostweb/default.html)
 
 ### The App Script
 
 Open the App.js file from the scripts folder and replace it's content with the following source.
 
+<<[App.js code](code/exercises/taskapphostweb/app.js)
+
 ### The App Styles
 
 Again, to fix some style bugs insert the following stylesheets in App.css (which is located in your Apps content directory).
+
+<<[App.css stylesheets](code/exercises/taskapphostweb/app.css)
 
 ### Executing the App
 
@@ -233,14 +243,25 @@ Open **AppManifest.xml** and go to the **Permissions** tab. From the **scope** c
 
 This is ciritcal because without requesting this permission, SharePoint will bounce your search requests.
 
+## Bundle Config
+
+<<[BundleConfig code](code/exercises/providerhostedsearchapp/BundleConfig.cs)
 
 ## The User Interface (UI)
 
 The UserInterface (UI) for the ProviderHostedSearchCenter App is pretty easy.
+
+<<[_layouts.cshtml code](code/exercises/providerhostedsearchapp/_layout_.cshtml)
+
+<<[index.cshtml code](code/exercises/providerhostedsearchapp/index.cshtml)
+
 ## The Script
+
+<<[App.js code](code/exercises/providerhostedsearchapp/app.js)
 
 ## The Styling
 
+<<[Site.css stylesheets](code/exercises/providerhostedsearchapp/site.css)
 
 ## Run the App
 
