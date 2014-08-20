@@ -1,0 +1,330 @@
+# ShareCoffee AddOns
+
+As true for every JavaScript library it's easy to extend such libraries. ShareCoffee is also offering two AddOns. Currently there are AddOns available for
+
+ * SharePoint Search API
+ * SharePoint UserProfiles API
+
+all the requests or operations could also be invoked by using only the main *ShareCoffee* framework. Why should you care about these AddOns? Well, these AddOns are providing an higher level of abstraction for those services. Have you ever used the REST endpoints for UserProfile Services? The REST endpoint urls are hard to remember, because of that *ShareCoffee.UserProfiles* is providing a helper property which exposes all the urls as JavaScript properties.
+
+Another great example for Search are PostQueries. Once you Search query becomes to complex, you've to use a PostQuery instead of sending search requests using the default GET endpoint. When invoking a PostQuery, you've to provide exaclty the same casing as Microsoft is using internally within the CLR classes. All incoming search requests will automatically be translated in CLR objects, unfortunately is the translation logic not smart enough to ingore case errors. *ShareCoffee.Search* provides a JavaScript class which ensures proper casing for all the PostQuery properties SharePoint 2013 is offering. You see, it's not only about time-saving, it's also about robustness!
+
+# ShareCoffee.Search
+
+SharePoint Search may be a beast. It's API is very powerful and allows you to build queries that match 100% to your (or your customer's) demand. Also Search's REST API is offering a ton of parameters which could be specified. Remembering all these parameters with it's casing is a kind of impossible. And because also the casing is very important, ShareCoffee.Search is assisting in exactly this area. 
+
+It's not only providing a Search Configuration Object (which cares internally about casing properties in the way SharePoint required them), not it's also providing a simple object which provides all the Search endpoint urls for you.
+
+As true for all AddOns, you've to explicitly install it either by using **NuGet** or **bower.io**. 
+
+    Install-Package ShareCoffee.Search
+    # or if you're using bower
+    bower install ShareCoffee.Search
+
+Next you've to load all the required script files within your website
+
+{title="Adding Script references",lang=html}
+~~~~~~
+    <!-- for the minified version -->
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee/ShareCoffee.min.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.min.js"></script>
+
+    <!-- or for the debug version -->
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee/ShareCoffee.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.js"></script>
+~~~~~~
+
+Once the package is installed and scripts are referenced, you can start exploring it's API. All AddOns are populating REST endpoint urls at `ShareCoffee.Url`, for search the available properties are
+
+|Property|Url that will be returned|
+|--------|-------------------------|
+|ShareCoffee.Url.Query|`search/query`|
+|ShareCoffee.Url.PostQuery|`search/postquery`|
+|ShareCoffee.Url.Suggest|`search/suggest`|
+
+## Executing Search Queries
+
+Creating a Query using ShareCoffee.Search is nothing special. Depending on your environment you either enter by ShareCoffee.REST or ShareCoffee.CrossDomain namespace and use the typical ShareCoffee API. If you’re executing queries using HTTP GET there is a URL length limitation which is defined in [RFC 2616](http://www.faqs.org/rfcs/rfc2616.html) caused by this ShareCoffee will throw an error if you try to execute a GET request using such a long URL. Instead you should use PostQuery (see next paragraph)
+
+{title="Execute a Query using ShareCoffee.Search",lang=javascript}
+~~~~~~
+    // pass querytext, selectproperties, querytemplate to the constructor
+    var properties = new ShareCoffee.QueryProperties();
+
+    // or set them directly on the properties object
+    properties.queryText = "Office 365";
+    properties.rowLimit = 100;
+    properties.startRow = 50;
+    
+    // optional either set on properties Object or use jQuery's API chain
+    properties.onSuccess = function(data){
+       // handle search results
+    };
+ 
+    $.ajax(ShareCoffee.REST.Search.build.read.for.jQuery(properties))
+    .done(properties.onSuccess).fail(function(error){
+      // handle error
+    });
+~~~~~~
+As you can see in the sample, `ShareCoffee.REST` will be used as you've already learned in the previous chapters, there is nothing new. The only important aspect here is to use an instance of **ShareCoffee.QueryProperties**.
+
+## Executing Post Queries (with CrossDomain)
+
+Executing a PostQurey means you must use an instance of **PostQueryProperties**. To make this sample a bit more interesting, you'll see how to execute a PostQuery in conjunction with SharePoint's CrossDomain library.
+
+{title="Execute a PostQuery using ShareCoffee.Search",lang=javascript}
+~~~~~~
+    //load SharePoint's CrossDomain Library
+    $s.CrossDomain.loadCrossDomainLibrary(onCrossDomainLibLoaded, 
+      function(){
+        console.log("Error loading CrossDomain lib")  
+    });
+ 
+    var onCrossDomainLibLoaded = function(){
+      var p = new ShareCoffee.PostQueryProperties();
+      p.Querytext = 'Office 365';
+      p.StartRow = 15;
+      p.RowLimit = 200;
+      p.onSuccess = function(suggestResults){
+        // handle results;
+      };
+      p.onError = function(error){
+        // handle error
+      }
+
+      var e = new SP.RequestExecutor(
+        ShareCoffee.Commons.getAppWebUrl());
+      e.executeAsync(ShareCoffee.CrossDomain.
+          build.create.for.SPCrossDomainLib(p));
+    };
+~~~~~~
+
+
+## Executing a Suggest Query
+
+Last search operation that can be executed using SharePoint's REST API is a suggest query. Suggest Queries are also handled as simple GET requests by SharePoint.
+
+{title="Execute a SuggestQuery using ShareCoffee.Search",lang=javascript}
+~~~~~~
+    var p = new ShareCoffee.SuggestProperties("SharePoint");
+    p.showpeoplenamesuggestions = true;
+ 
+    $.ajax(ShareCoffee.REST.build.read.for.jQuery(p))
+    .done(function(data){
+      // handle data  
+    })
+    .fail(function(error){
+      // handle error
+    });
+~~~~~~
+
+# ShareCoffee.UserProfiles
+
+ShareCoffee.UserProfiles is the second AddOn provided by the author. In contrast to search queries are UserProfile queries not that complicated, but remembering the REST endpoint urls may be the hardest task when dealing with user profiles using SharePoint's REST API.
+
+As true for all AddOns, you've to explicitly install it either by using **NuGet** or **bower.io**. 
+
+    Install-Package ShareCoffee.UserProfiles
+    # or if you're using bower
+    bower install ShareCoffee.UserProfiles
+
+Next you've to load all the required script files within your website
+
+{title="Adding script references",lang=html}
+~~~~~~
+    <!-- for the minified version -->
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee/ShareCoffee.min.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee.UserProfiles/ShareCoffee.UserProfiles.min.js"></script>
+
+    <!-- or for the debug version -->
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee/ShareCoffee.js"></script>
+    <script type='text/javascript' 
+            src="../Scripts/ShareCoffee.UserProfiles/ShareCoffee.UserProfiles.js"></script>
+~~~~~~
+
+Once the package is installed and scripts are referenced, you can start exploring it's API. All AddOns are populating REST endpoint urls at `ShareCoffee.Url`, for search the available properties are
+
+
+|Property|Url that will be returned|
+|--------|-------------------------|
+|ShareCoffee.Url.SetMyProfilePicture|SP.UserProfiles.PeopleManager/SetMyProfilePicture|
+|ShareCoffee.Url.GetMyProperties|SP.UserProfiles.PeopleManager/GetMyProperties|
+|ShareCoffee.Url.GetProperties|SP.UserProfiles.PeopleManager/ GetPropertiesFor(accountName=@v)?@v= |
+|ShareCoffee.Url.GetUserProfileProperty|SP.UserProfiles.PeopleManager/ GetUserProfilePropertyFor(accountName=@v, propertyName=@p)?@v=&@p= |
+
+
+## Receiving current users Properties
+
+Reading the properties from the current user is pretty easy, just provide the url to ShareCoffee's fluent API and your already done
+
+{title="load current users properties",lang=javascript}
+~~~~~~
+    $.ajax(ShareCoffee.REST.build.read.for.jQuery({
+      url: ShareCoffee.Url.GetMyProperties
+    })
+    .done(onSuccess).fail(onError);
+~~~~~~
+
+## Reading User Properties
+
+This sample demonstrates how to read all Properties for a given user (you've to pass the loginName for all these samples).
+
+{title="read properties by user",lang=javascript}
+~~~~~~
+    var loadUserProperties = function(accountName){
+        var p = new ShareCoffee.UserProfileProperties(
+            ShareCoffee.Url.GetProperties,
+            accountName
+        );
+        $.ajax(ShareCoffee.REST.build.read.for.jQuery(p))
+        .done(onSuccess)
+        .fail(onError);
+    };
+
+    loadUserProperties(myOffice365LoginName);
+~~~~~~
+
+## Reading an UserProfile Property
+
+Depending on your environment, you can find useful information about users by querying UPS (UserProfileStore) as shown below
+
+{title="read a property by user",lang=javascript}
+~~~~~~
+    var loadUserProfilePropertyFor = function(accountName, propertyName){
+        var p = new ShareCoffee.UserProfileProperties(
+            ShareCoffee.Url.GetUserProfileProperty,
+            accountName,
+            propertyName
+        );
+        $.ajax(ShareCoffee.REST.build.read.for.jQuery(p))
+        .done(onSuccess)
+        .fail(onError);
+    };
+
+    loadUserProfilePropertyFor(myOffice365LoginName, "WorkEmail");
+~~~~~~
+
+## Updating ProfilePicture
+
+Updating the current users profile picture is pretty easy. You just have to construct a post request and configure it using the existing `ShareCoffee.ProfilePictureProperties` class as demonstrated below
+
+{title="update the user profile pic",lang=javascript}
+~~~~~~
+     var newUserPictureStream = getPictureStreamFromSomewhere();
+
+     var p = new ShareCoffee.ProfilePictureProperties(
+         newUserPictureStream,
+         onPictureUpdated,
+         onError
+     );
+     $.ajax(ShareCoffee.REST.build.update.for.jQuery(p));
+     .done(p.onPictureUpdated)
+     .fail(p.onError);
+~~~~~~
+
+# Build your own AddOn
+
+ShareCoffee is of course offering an entire wrapper for all REST services SharePoint is currently offering, but on top of that you could also provide custom Add-Ons. When talking about Add-Ons, two different kinds of Add-Ons have to be mentioned. First, there are Add-Ons covering dedicated services such as ShareCoffee.Search or ShareCoffee.UserProfiles. This kind of Add-Ons are providing dedicated helpers and time-savers for a given service hosted by SharePoint or SharePoint Online.
+
+On the other side, there are Domain Add-Ons. Domain Add-Ons are providing a special kind of programming interface for an already given endpoint in SharePoint. For example consider you’re writing multiple apps offering task management, by providing a ‘ShareCoffee.TaskService’ Add-On, you can easily reduce the amount of code to write within each of these apps.
+
+## AddOn Development Stack
+
+If you aren’t familiar with the [yeoman](http://yeoman.io) frontend development workflow, you should consider reading the tutorial on it’s website. Yeoman is a productivity boost for every web developer and makes creating new Web-Apps very easy. ShareCoffee’s Add-Ons are based on a special yeoman generator. Generators for yeoman are small templates that define how a new project based on this generator will look like. The generator-sharecoffee-addon is responsible for pulling all the development dependencies from the web and installing them on your development machine. Most important to know about yeoman is the fact that it’s based on [Node.JS](http://nodejs.org), so you can create new ShareCoffee Add-Ons from almost every device.
+
+
+## Installing Yeoman and the Add-On Generator
+
+Installing Node.JS is fairly simple and will not be covered here. Check the web for thousands of articles describing how to install Node.JS on your operating system.
+With a valid Node.JS installation you’ll also have access to the Node Package Manager (called npm). Yeoman and it’s generators have to be installed globally, therefor you need to have administrative (or root) permissions in order to install the required packages on your system. Actually installing yeoman is just a single command.
+
+    npm install -g yo
+
+When executing this command npm will check your system and install all the dependencies currently not installed on your system. Yeoman itself is offering nothing without it’s generators therefor let’s install the `generator-sharecoffee-addon` by executing
+
+    npm install -g generator-sharecoffee-addon
+
+## The MyFirstAddOn AddOn
+At this point you’re able to start with your new Add-On. So let’s create a new directory for our Add-On
+
+    #go to your development folder
+    #on a Mac this will look like this
+
+    cd ~/dev/ 
+    
+    #on a Windows machine it'll look like this
+    cd /c/dev/
+
+    mkdir MyFirstAddOn
+    cd MyFirstAddOn
+
+    # now let's use yeoman for scaffolding the entire AddOn by executing
+    yo sharecoffee-addon
+
+The generator will be invoked and it’ll ask you a few questions about your new Add-On, it’s important to provide real answers here, because yeoman is heavily using template generators in order to save your time. 
+
+![yeoman generator for ShareCoffee AddOns](images/addons/yo_generator.png)
+
+Again it’ll pull down all the project related dependencies and install them in the scope of the current project. You’ll receive the following files and folder structure within the `MyFirstAddOn` folder
+
+![yeoman generator output](images/addons/yo_generator_output.png)
+
+What are all these files and folder? Well, all these files and folders form up an increadible development stack. See this list of folders and their responsibility
+
+|Folder|Responsibility|
+|------|--------------|
+|src|all your AddOn source have to be located in this folder|
+|test|all unit-tests belong to this folder|
+|bower_components|Installed client side dependencies|
+|dist|Will contain the compiled AddOn|
+|license|Contains a license file for your AddOn|
+|docs|Will contain a complete documentation (annotated source) for your AddOn|
+|node_modules|Contains all the dependencies for development time|
+|nuget|Will contain generated nuget packages|
+
+There are also a ton of files, which ones should you care about? Check this list
+
+|File|Responsibility|
+|----|--------------|
+|.editorconfig|Many editors and IDE's provide an EditorConfig AddOn, which takes care about tabs, spaces and indentions (this makes team-development more easy)|
+|.gitignore|defines common files which should not be stored in source control|
+|.jshintrc| JS hint configuration|
+|bower.json|defines clientside dependencies for bower.io|
+|Gruntfile.coffee|The most important file! This file describes all the available grunt tasks (next section) which can be invoked from command line in order to invoke common tasks|
+|package.json|defines all the dependencies for development time|
+|Readme.md|This is just a simple readme (will provide a nice description site on github for example)|
+|readme.txt|When installing your AddOn using NuGet in Visual Studio, this readme will automatically be opened|
+|ShareCoffee.MyFirstAddOn.nuspec|NuGet package specification file|
+
+`Gruntfile.coffee` defines some jobs that can be invoked using `grunt-cli`. See the following list of available commands. 
+
+
+|Command|Action that will be executed|
+|-------|----------------------------|
+|build(default)|Runs all unit tests, updates the documentation, compiles CoffeeScript to JavaScript, Minifies all the JavaScript, generates the NuGet Package as specified in the NuSpec file|
+|test|Runs all the unit tests|
+|docs|Updates the documentation|
+
+Each of these commands can be invoked by piping it as first argument to the **grunt** executable.
+
+    # build the AddOn
+    grunt build
+    # or (because it's the default task)
+    grunt
+
+    # only run unit tests
+    grunt test
+
+    # only update the docs
+    grunt docs
+
+
+By default the AddOn generator also provide some sample code and a sample UnitTest for you. Just review the source file at `src/ShareCoffee.MyFirstAddOn.coffee` and check out the sample UnitTest at `test/ShareCoffee.MyFirstAddOn.tests.coffee`.
+

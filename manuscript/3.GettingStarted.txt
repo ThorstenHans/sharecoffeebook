@@ -37,37 +37,25 @@ First let's asume that *NodeJS* and *npm* (Node Package Manager) are installed o
 
 Bower offers exactly the same capabilities as NuGet like updating, downgrading, uninstalling dependencies. ShareCoffee is offering it's package also on bower.io in order to support SharePoint App developers that use NodeJS or RubyOnRails for building their Apps, because bower.io is more popular in their communities.
 
-
-
 ## Hello ShareCoffee
-
-###Prerequirements
-
-In order to complete this sample, you need two things, a Visual Studio 2013 installation on your developoment box and an Office 365 tenant (SharePoint 2013 OnPremise with Apps configured is also ok).
-
-On your SharePoint tenant you also have to create a special kind of SiteCollection, called a **Developer Site**, a "Developer Site" allows you to side-load Apps directly from within Visual Studio.
 
 ### Your first SharePoint App with ShareCoffee
 
 There isn't a better way to get started with a framework as actually using it.
 
-Start **Visual Studio 2013** by using the **Run as administrator** option
-
-In VS on the **File** menu, choose **New** and then select **Project**
-
-In the **New Project** Dialog expand the **Visual C#** node, expand the **Office/SharePoint** node and choose **Apps**. Choose **App for SharePoint**.
-
-As name provide something like **HelloShareCoffee** and hit **Ok**.
-
-Visual Studio will open up the SharePoint App wizard where you've to provide the url to your **Developer Site**, in the section below, you've to specify the kind of you're going to create.
+  * Start **Visual Studio 2013** by using the **Run as administrator** option
+  * Create a new project using FILE | NEW | PROJECT
+  * From the **New Project** dialog choose VISUAL C# | OFFICE/SHAREPOINT and select **App for SharePoint**
+  * Provide **HelloShareCoffee** as name and hit **OK**
+  * In **SharePoint App wizard** provide your **Developer-Site's url**
 
 ![SharePoint App Wizard in Visual Studio 2013](images/GettingStarted/app_wizard.png)
 
-T> In the picture above, you're seeing three types of Apps, Autohosted Apps are
-T> depricated, so currently there are only two real options. If you've already created
-T> Autohosted Apps for SharePoint read [this article for more inforation](http://blogs.office.com/2014/05/16/update-on-autohosted-apps-preview-program/)
+T> ## SharePoint App Hosting Options
+T> All the different hosting options were discussed in Chapter One, if you're not using the recent VS 2013 Update (Update 3) you may see the term Autohosted App right here. Autohosted Apps are depricated, so currently there are only two real options. 
+T> If you've already created Autohosted Apps for SharePoint read [this article for more inforation](http://blogs.office.com/2014/05/16/update-on-autohosted-apps-preview-program/)
 
-For this sample lets choose **SharePoint-Hosted** as type of the App and click **Finish**. Depending on your system configuration, you've now to provide credentials for accessing the Developer Site. After providing them, VS is going to spin up the project.
+For this sample lets choose **SharePoint-Hosted** as type of the App and click **Finish**. Depending on your system configuration, you've to provide your Office 365 credentials now in order to access the Developer Site. After providing them, Visual Studio is going to spin up the project.
 
 Open the **Package Manager Console** by focusing the VS2013's new **Quick Launch** and start typing **Package Manager Console**. From the list of results select **View -> Other Windows -> Package Manager Console**
 
@@ -95,6 +83,8 @@ Load ShareCoffee right here by referencing the minified ShareCoffee JavaScript f
 
 Within the **PlaceHolderMain Content Control** remove all the content and replace it with the following HTML
 
+{title="Hello World UI",lang=html}
+~~~~~~
     <h1>Hello ShareCoffee</h1>
     <h4> AppWeb Url:
       <span id="appWebUrl"></span>
@@ -108,11 +98,14 @@ Within the **PlaceHolderMain Content Control** remove all the content and replac
     <h4> Form Digest:
       <span id="formDigest"></span>
     </h4>
+~~~~~~
 
 ### Updating App.js
 
 Finally the JavaScript logic has to be changed, open the App.js file by double-clicking it. (It's located in the Scripts folder). Delete **all the content** from the JavaScript file and write the following few lines of JavaScript code.
 
+{title="Hello World logic",lang=javascript}
+~~~~~~
     $(document).ready(function() {
 
       $("#appWebUrl").text(ShareCoffee.Commons.getAppWebUrl());
@@ -121,13 +114,14 @@ Finally the JavaScript logic has to be changed, open the App.js file by double-c
       $("#apiRootUrl").text(ShareCoffee.Commons.getApiRootUrl());
       $("#formDigest").text(ShareCoffee.Commons.getFormDigest());
     });
+~~~~~~
 
 The script is really straight forward. It's piping the result values from ShareCoffee's methods directly to each span's **text** method.
 
 ### Testing the App
 
- Install and test your SharePoint-Hosted App by hitting **F5** in Visual Studio. VS is going to package the App, upload it to SharePoint and installs it on your Developer Site.
+ Install and test your SharePoint-Hosted App by hitting **F5** in Visual Studio. Visual Studio will now package your SharePoint App. Once packaging is finished, the App package will be uploaded and installed in your Office 365 Developer Site using a technology called **Side Loading**.
 
- Your default browser should now pop up and load the Default.aspx. If you've made no mistakes, it should look like this
+ Your default browser should now popup and load your App's start-page. If you've followed all the steps described above, your browser should present something similar to this
 
  ![Sample 1 Result](images/GettingStarted/sample1_result.png)

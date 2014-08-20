@@ -1,4 +1,5 @@
-0.AboutTheAuthor.txt
+0.0.AboutTheAuthor.txt
+0.1.Requirements.txt
 1.Introduction.txt
 2.AboutShareCoffee.txt
 3.GettingStarted.txt
@@ -7,5 +8,8 @@
 6.ShareCoffee.CSOM.txt
 7.ShareCoffee.REST.txt
 8.ShareCoffee.CrossDomain.txt
-9.ShareCoffee.AddOns.txt
+9.0.ShareCoffee.AddOns.txt
+9.1.ShareCoffee.Search.txt
+9.2.ShareCoffee.UserProfiles.txt
+9.3.ShareCoffee.CustomAddon.txt
 10.Exercises.txt

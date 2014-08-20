@@ -1,6 +1,8 @@
 #ShareCoffee.Commons
 
-Commons is exposing a lot of great functionality, that you can use within your App to gather required information about the current context.
+ShareCoffee's Commons namespace is exposing a lot of great functionality which can be used within the scope of any SharePoint App to gather required information about the App itself and it's current context.
+
+The commons have been used throughout the entire library in order to build up all the features like REST, CrossDomain or CSOM abstraction.
 
 ##Commons.getAppWebUrl()
 
@@ -14,6 +16,8 @@ Internally this method is taking care of all the context. first it's checking if
 
 But there are scenarios when you as a developer are going to store the AppWeb url in your own storage and you'd like to read it from there. Therefor is ShareCoffee exposing an injection point where you can either provide directly a string or a method which will be invoked. Once you set one of both, it's only executing your logic and ignoring all the other stuff.
 
+{title="working with the AppWeb Url",lang=javascript}
+~~~~~~
     // Providing a string directly instead of using the internal ShareCoffee logic
     ShareCoffee.Commons.loadAppWebUrlFrom = "https://sample.sharepoint.com/appweburl";
     var myAppWebUrl = ShareCoffee.Commons.getAppWebUrl();
@@ -32,7 +36,7 @@ But there are scenarios when you as a developer are going to store the AppWeb ur
     console.log(myAppWebUrl);
 
     // will print "https://sample.sharepoint.com/appweburl2"
-
+~~~~~~
 
 
 ##Commons.getHostWebUrl()
@@ -43,6 +47,8 @@ But there are scenarios when you as a developer are going to store the AppWeb ur
 
 As the same for `getAppWebUrl()` you can inject either a string or a custom function for querying the HostWeb url by assigning it to `loadHostWebUrlFrom` as shown below
 
+{title="working with the HostWeb Url",lang=javascript}
+~~~~~~
     // inject a custom string
     ShareCoffee.Commons.loadHostWebUrlFrom = "https://sample.sharepoint.com/sample";
     var hostWebUrl = ShareCoffee.Commons.getHostWebUrl();
@@ -59,6 +65,7 @@ As the same for `getAppWebUrl()` you can inject either a string or a custom func
     var hostWebUrl = ShareCoffee.Commons.getHostWebUrl();
     console.log(hostWebUrl);
     // will print https://sample.sharepoint.com/sites/sample2"
+~~~~~~
 
 ##Commons.getApiRootUrl()
 
