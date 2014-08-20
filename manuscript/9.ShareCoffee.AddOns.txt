@@ -71,7 +71,7 @@ As you can see in the sample, `ShareCoffee.REST` will be used as you've already 
 
 Executing a PostQurey means you must use an instance of **PostQueryProperties**. To make this sample a bit more interesting, you'll see how to execute a PostQuery in conjunction with SharePoint's CrossDomain library.
 
-{title="Execute a PostQuery using ShareCoffee.Search",lang=javascript}
+{title="Execute a PostQuery using ShareCoffee.Search",lang=javascript,line-numbers=off}
 ~~~~~~
     //load SharePoint's CrossDomain Library
     $s.CrossDomain.loadCrossDomainLibrary(onCrossDomainLibLoaded, function(){
