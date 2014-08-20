@@ -60,21 +60,19 @@ Creating a Query using ShareCoffee.Search is nothing special. Depending on your 
        // handle search results
     };
  
-    $.ajax(ShareCoffee.REST.Search.build.query.for.jQuery(properties))
+    $.ajax(ShareCoffee.REST.Search.build.read.for.jQuery(properties))
     .done(properties.onSuccess).fail(function(error){
       // handle error
     });
 
-As you can see in the sample, `ShareCoffee.REST` has now a dedicated property called `Search`. Search is again offering all the functionalities that are provided by SharePoint's Search REST interface
-
-  * ShareCoffee.REST.**Search**.build.**query**.for.jQuery();
-  * ShareCoffee.REST.**Search**.build.**postQuery**.for.angularJS();
-  * ShareCoffee.REST.**Search**.build.**suggest**.for.reqwest();
+As you can see in the sample, `ShareCoffee.REST` will be used as you've already learned in the previous chapters, there is nothing new. The only important aspect here is to use an instance of **ShareCoffee.QueryProperties**.
 
 ## Executing Post Queries (with CrossDomain)
 
-Executing a PostQurey is nothing special, to make this sample a bit more interesting, you'll see how to execute a PostQuery in conjunction with SharePoint's CrossDomain library.
+Executing a PostQurey means you must use an instance of **PostQueryProperties**. To make this sample a bit more interesting, you'll see how to execute a PostQuery in conjunction with SharePoint's CrossDomain library.
 
+{title="Execute a PostQuery using ShareCoffee.Search",lang=javascript}
+~~~~~~
     //load SharePoint's CrossDomain Library
     $s.CrossDomain.loadCrossDomainLibrary(onCrossDomainLibLoaded, function(){
       console.log("Error loading CrossDomain lib")  
@@ -93,12 +91,11 @@ Executing a PostQurey is nothing special, to make this sample a bit more interes
       }
 
       var e = new SP.RequestExecutor(ShareCoffee.Commons.getAppWebUrl());
-      e.executeAsync(ShareCoffee.CrossDomain.Search.
-          build.postQuery.for.SPCrossDomainLib(p));
+      e.executeAsync(ShareCoffee.CrossDomain.
+          build.create.for.SPCrossDomainLib(p));
     };
+~~~~~~
 
-
-As the same for `ShareCoffee.REST`, `ShareCoffee.CrossDomain` is now offering the `Search` property.
 
 ## Executing a Suggest Query
 
@@ -108,7 +105,7 @@ Last search operation that can be executed using SharePoint's REST API is a sugg
     var p = new ShareCoffee.SuggestProperties("SharePoint");
     p.showpeoplenamesuggestions = true;
  
-    $.ajax(ShareCoffee.REST.Search.build.suggest.for.jQuery(p))
+    $.ajax(ShareCoffee.REST.build.read.for.jQuery(p))
     .done(function(data){
       // handle data  
     })
