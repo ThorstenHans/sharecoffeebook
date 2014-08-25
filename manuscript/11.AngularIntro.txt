@@ -41,12 +41,13 @@ The second parameter is used to specify dependencies for your AngularJS module o
 
 A single view can have multiple controller, each controller is representing an instance of a custom JavaScript object which is exposing an object called `$scope`. $scope is perhaps the most important object when talking about controllers. It's used to expose both, data and functionality to the view. Controller are defined inside of our app, therefor the code for creating the controller will look like the following
 
-    angular.module('myFirstApp').controller('sampleCtrl', function($scope){
-      $scope.name = 'World';
+    angular.module('myFirstApp').controller('sampleCtrl', 
+      function($scope){
+        $scope.name = 'World';
 
-      $scope.writeMessageToConsole = function(){
-        console.log($scope.name);
-      };
+        $scope.writeMessageToConsole = function(){
+          console.log($scope.name);
+        };
     });
 
 ### Models
@@ -79,7 +80,8 @@ I> ##ng-sharepoint
 I> [Kevin Mees][https://github.com/kmees] has created a dedicated wrapper for accessing SharePoint's REST APIs based on ShareCoffee. 
 I> [angular-sharepoint](https://github.com/ExpertsInside/angular-sharepoint) will reduce the amount of code you've to write again dramatically. If you're interested in working with ShareCoffee and AngularJS you should also check his library.
 
-##Let's build a TaskManagement App (AppWeb)
+
+#Let's build a TaskManagement App (AppWeb)
 
 This sample will demonstrate how to use ShareCoffee in order to build a simple TaskManagement App for SharePoint (Online) which uses a Task-List from the AppWeb as datastorage. 
 
@@ -120,7 +122,7 @@ In order to get everything working you've again to add references to all the sty
 
 The UI is again straight forward. Use this HTML inside of the **PlaceHolderMain** Content Control
 
-<<[Default.aspx code](code/exercises/taskappappweb/default_refs.html)
+<<[Default.aspx code](code/exercises/taskappappweb/default.html)
 
 ### The App Script
 
@@ -188,7 +190,7 @@ In order to get everything working you've again to add references to all the sty
 
 The UI is again straight forward. Use this HTML inside of the **PlaceHolderMain** Content Control
 
-<<[Default.aspx code](code/exercises/taskapphostweb/default_refs.html)
+<<[Default.aspx code](code/exercises/taskapphostweb/default.html)
 
 ### The App Script
 
