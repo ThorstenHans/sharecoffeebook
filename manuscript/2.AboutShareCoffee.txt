@@ -88,7 +88,6 @@ W> The NuGet Packaging Tool is currently only available on Windows systems. Ther
 W> a Mono port from <thead></thead> NuGet command line tool, but it's not working as expected if you pipe various arguments to the command line interface
 W> Therefore it's important that you generate the NuGet Packages on a Windows Machine!
 
-{pagebreak}
 
 ## Bugs / Feature Requests
 

@@ -16,28 +16,7 @@ Internally this method is taking care of all the context. first it's checking if
 
 But there are scenarios when you as a developer are going to store the AppWeb url in your own storage and you'd like to read it from there. Therefor is ShareCoffee exposing an injection point where you can either provide directly a string or a method which will be invoked. Once you set one of both, it's only executing your logic and ignoring all the other stuff.
 
-{title="working with the AppWeb Url",lang=javascript}
-~~~~~~
-    // Providing a string directly instead of using the internal ShareCoffee logic
-    ShareCoffee.Commons.loadAppWebUrlFrom = "https://sample.sharepoint.com/appweburl";
-    var myAppWebUrl = ShareCoffee.Commons.getAppWebUrl();
-
-    console.log(myAppWebUrl);
-
-    // will print "https://sample.sharepoint.com/appweburl"
-
-    // Providing a method which has to return the AppWeb url as String
-    ShareCoffee.Commons.loadAppWebUrlFrom = function(){
-        // load AppWeb url form somewhere else
-        return "https://sample.sharepoint.com/appweburl2";
-    };
-    var myAppWebUrl = ShareCoffee.Commons.getAppWebUrl();
-
-    console.log(myAppWebUrl);
-
-    // will print "https://sample.sharepoint.com/appweburl2"
-~~~~~~
-
+<<[AppWebUrl Usage](code/commons/appweburl.js)
 
 ##Commons.getHostWebUrl()
 
@@ -47,25 +26,7 @@ But there are scenarios when you as a developer are going to store the AppWeb ur
 
 As the same for `getAppWebUrl()` you can inject either a string or a custom function for querying the HostWeb url by assigning it to `loadHostWebUrlFrom` as shown below
 
-{title="working with the HostWeb Url",lang=javascript}
-~~~~~~
-    // inject a custom string
-    ShareCoffee.Commons.loadHostWebUrlFrom = "https://sample.sharepoint.com/sample";
-    var hostWebUrl = ShareCoffee.Commons.getHostWebUrl();
-
-    console.log(hostWebUrl);
-    // will print https://sample.sharepoint.com/sample"
-
-    // injecting a custom method
-    ShareCoffee.Commons.loadHostWebUrlFrom = function(){
-       // load HostWeb url from somewhere else
-       return "https://sample.sharepoint.com/sites/sample2";
-    };
-
-    var hostWebUrl = ShareCoffee.Commons.getHostWebUrl();
-    console.log(hostWebUrl);
-    // will print https://sample.sharepoint.com/sites/sample2"
-~~~~~~
+<<[HostWebUrl Usage](code/commons/hostweburl.js)
 
 ##Commons.getApiRootUrl()
 
