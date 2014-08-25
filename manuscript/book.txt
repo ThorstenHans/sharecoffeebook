@@ -13,3 +13,4 @@
 9.2.ShareCoffee.UserProfiles.txt
 9.3.ShareCoffee.CustomAddon.txt
 10.Exercises.txt
+11.AngularIntro.txt
