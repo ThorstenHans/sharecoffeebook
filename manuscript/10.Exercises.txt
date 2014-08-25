@@ -91,4 +91,4 @@ After trusting the App, you'll be redirected to your SearchCenter App where you 
 
 ## Download the Source
 
-The entire source-code for this example can be downloaded [here](http://foo/bar)
+The entire source-code for this example can be downloaded [here](http://1drv.ms/1BU2e70)

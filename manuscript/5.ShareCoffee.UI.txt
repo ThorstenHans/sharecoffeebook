@@ -28,24 +28,7 @@ Providing a proper configuration (or options object) to the `loadAppChrome` meth
 
 The entire configuration for the AppChrome is done by using ShareCoffee's model classes `SettingsLink` and `ChromeSettings`.
 
-    var settingsLink1 = new ShareCoffee.SettingsLink(
-      'foo.html', //Path for the SettingsPage
-      'Settings Page', // Page title
-      true // boolean which indicates if entire QueryString should be passed
-    );
-    var settingsLink2 = new ShareCoffee.SettingsLink(
-      'profile.html', 'Your Profile', false);
-
-    var options = new ShareCoffee.ChromeSettings(
-      iconUrl,  // path to the App icon
-      'MyApp Title', // App's title
-      'Help.aspx', // Path to your Help Page (optional)
-      settingslink1,
-      settingslink2 // it's a splat, provide as many SettingsLinks as you have to
-      );
-
-
-    ShareCoffee.UI.loadAppChrome("sp-chrome", options);
+<<[AppChrome Sample](code/ui/app_chrome.js)
 
 
 ## SharePoint Notifications
@@ -84,7 +67,8 @@ Assume the code from the sample above, you've stored the identifier of the secon
 
 ![ShareCoffee Notifications Sample App](images/sharecoffee_ui/sharecoffee_notifications.png)
 
-Check out [this github repository](https://github.com/ThorstenHans) there you can find all the source for the app showed in the image above.
+You can also download the entire sample code from above [here](http://1drv.ms/1BU2gvy).
+
 ## SharePoint Status messages
 
 When it comes to SharePoint status messages all the advantages from Notifications will again be taken in place. But for Status messages there are four methods available
@@ -144,5 +128,5 @@ There are scenarios when you'd like to clean all existing status messages from t
 
 ![ShareCoffee Status Messages Sample App](images/sharecoffee_ui/sharecoffee_statusmessages.png)
 
-Check out [this github repository](https://github.com/ThorstenHans) there you can find all the source for the app showed in the image above.
+All the sources for using ShareCoffee's status API are also available for download [here](http://1drv.ms/1BU2xyK)
 

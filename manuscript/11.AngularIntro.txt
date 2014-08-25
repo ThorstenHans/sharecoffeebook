@@ -144,7 +144,7 @@ When executing the App, it should render your TaskManagement App like the follow
 
 ### Download the Source
 
-The entire source-code for this example can be downloaded [here](http://foo/bar)
+The entire source-code for this example can be downloaded [here](http://1drv.ms/1BU25AA)
 
 
 #Let's build a TaskManagement App (HostWeb)
@@ -216,4 +216,4 @@ If you've trusted the App, you'll be forwarded to your Task-Management App which
 
 ## Download the Source
 
-The entire source-code for this example can be downloaded [here](http://foo/bar)
+The entire source-code for this example can be downloaded [here](http://1drv.ms/1BU29QG)
