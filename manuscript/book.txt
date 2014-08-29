@@ -1,5 +1,6 @@
 0.0.AboutTheAuthor.txt
 0.1.Requirements.txt
+0.2.WhoShouldReadThisBook.txt
 1.Introduction.txt
 2.AboutShareCoffee.txt
 3.GettingStarted.txt
