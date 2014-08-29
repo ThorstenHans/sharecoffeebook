@@ -109,7 +109,7 @@ An App Permission is composed of up to three parts
 |----|-----------|
 |Scope|Defines the resource (SharePoint Item) your App is interested in|
 |Permission|Determines which action you App will perform on the scope|
-|Properties|Optional carrier for futher configuration|
+|Properties|Optional carrier for further configuration|
 
 
 For example let's consider that you're building an App which should use SharePoint's Search engine to pull information from SharePoint. In order to get your App working you've to configure the following permission request using the AppManifest Designer
