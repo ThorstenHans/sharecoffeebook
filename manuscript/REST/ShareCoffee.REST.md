@@ -45,7 +45,9 @@ which are reflecting the famous CRUD operations.
     ShareCoffee.REST.build.delete
     ShareCoffee.REST.build.del
 
-`del` is actually an alternative name which is internally executing the same logic as `delete`. This object has been introduced with ShareCoffee 0.1.4 because `delete` is treated as a reserved keyword in JavaScript. Modern browsers like FireFox, Chrome or Safari don't care about using a object called `delete`, but IE does. At least IE8 does. In order to support also useres with IE8, ShareCoffee is now offering this alternative approach for deleting data from SharePoint.
+T> ## why delete and del
+T> `del` is actually an alternative name which is internally executing the same logic as `delete`. This object has been introduced with ShareCoffee 0.1.4 because `delete` is treated as a reserved keyword in JavaScript. Modern browsers like FireFox, Chrome or Safari don't care about using a object called `delete`, but IE does.
+T> At least IE8 does. In order to support also useres with IE8, ShareCoffee is now offering this alternative approach for deleting data from SharePoint.
 
 
 In order to support all the following JavaScript frameworks

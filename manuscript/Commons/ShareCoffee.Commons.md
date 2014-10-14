@@ -77,17 +77,11 @@ T> It's important to point out, that the return value is not decoded
 T> in order to decode it pipe the return value to JavaScript's
 T> decodeURIComponent() method
 
-
-## Use $s to save even more keystrokes
-
-Instead of writing each and every time `ShareCoffee.` you can also use the `$s.` shorthand to access all the ShareCoffee functions and properties.
-
-    var queryString = $s.Commons.getQueryString();
-    console.log(queryString);
-
 ## Commons.infect()
 
-Infect is a new feature that has been released with ShareCoffee 0.1.3. Infect is responsible for appending `SPHostUrl` as a query-string parameter to all available `a` tags. You may have seen `spcontext.js` when building Provider Hosted Apps. This is actually what `spcontext.js` is doing. But Microsoft's default implementation is missing one thing. It works great for simple links, but if you're building a real app - no matter if you're using ASP.NET WebForms, MVC or something else - you also use `form` tags in your app in order to submit data back to the server. Once you submit such a form to your website, you've also to carry all the required things aroung using the querystring in order to get SharePoint Context working on result-pages.
+Infect is a new feature that has been released with ShareCoffee 0.1.3. Infect is responsible for appending `SPHostUrl` as a query-string parameter to all available `a` tags. You may have seen `spcontext.js` when building Provider Hosted Apps - It'll be added to your `scripts` folder automatically. This is actually what `spcontext.js` is doing.
+
+But Microsoft's default implementation is missing one thing. It works great for simple links, but if you're building a real app - no matter if you're using ASP.NET WebForms, MVC or something else - you also use `form` tags in your app in order to submit data back to the server. Once you submit such a form, you've also to carry all the required things around using the querystring in order to get SharePoint Context working on result-pages.
 
 Microsoft's `spcontext.js` is missing those `form` tags. `ShareCoffee.Commons.infect()` will go through the entire page and append the `SPHostUrl` to the following node-attribute combinations
 
@@ -120,3 +114,10 @@ Applying infect only to elements within that div will look like the following:
 var container = document.getElementById("app-container");
 ShareCoffee.Commons.infect(container);
 ~~~~~~
+
+## Use $s to save even more keystrokes
+
+Instead of writing each and every time `ShareCoffee.` you can also use the `$s.` shorthand to access all the ShareCoffee functions and properties.
+
+    var queryString = $s.Commons.getQueryString();
+    console.log(queryString);
