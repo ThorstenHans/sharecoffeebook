@@ -1,6 +1,6 @@
 #About the Author
 
-![Thorsten Hans](../images/thorsten_hans.jpg)
+![Thorsten Hans](images/thorsten_hans.jpg)
 
 Thorsten Hans is currently working together with four fellow SharePoint MVP's for [Experts Inside](http://www.expertsinside.com). Experts Inside is a typical StartUp in the age of Web2.0 with distributed offices, no on-premises systems, everything they need comes from the cloud (Office 365 and Windows Azure). He's a passionate developer and most time of the week he is building Apps and Solutions for SharePoint or SharePoint Online.
 
