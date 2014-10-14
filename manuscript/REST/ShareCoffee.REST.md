@@ -7,7 +7,7 @@ As mentioned in the **About ShareCoffee** chapter, developers have to reconfigur
 On top of those contextual changes that may impact the code you've to write, developers also have to remember different configuring approaches for actually building the REST requests using their preferred AJAX components.
 
 I> ###Supported Libraries
-I> Numerous JavaScript frameworks are offering AJAX wrappers in order to take away the pain of I>manually building HTTP(S) requests. **ShareCoffee is currently supporting jQuery, AngularJS and reqwest**
+I> Numerous JavaScript frameworks are offering AJAX wrappers in order to take away the pain of manually building HTTP(S) requests. **ShareCoffee is currently supporting jQuery, AngularJS and reqwest**
 
 ## Getting Started with ShareCoffee's REST API
 

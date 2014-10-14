@@ -51,6 +51,7 @@ As for plain REST requests is ShareCoffee also offering a fluent API for executi
     ShareCoffee.CrossDomain.build.read
     ShareCoffee.CrossDomain.build.update
     ShareCoffee.CrossDomain.build.delete
+    ShareCoffee.CrossDomain.build.del
 
 Because you've to use SPRequestExecutor in order to commuicate succesfully with SharePoint, there is only a single API available from this point
 
@@ -58,10 +59,16 @@ Because you've to use SPRequestExecutor in order to commuicate succesfully with 
     ShareCoffee.CrossDomain.build.read.for.SPCrossDomainLib();
     ShareCoffee.CrossDomain.build.update.for.SPCrossDomainLib();
     ShareCoffee.CrossDomain.build.delete.for.SPCrossDomainLib();
+    ShareCoffee.CrossDomain.build.del.for.SPCrossDomainLib();
 
 T> ## IE 8 workaround
 T> IE8 is supported by SharePoint 2013 OnPremise, if you're targeting this browser, you've to replace the **for** property by the **f** shorthand.
 T> IE9 is not able to execute a function or access a proprety called **for**
+
+T> ## del and delete
+T> If you haven't read the REST chapter you may wonder why there is del and delete. Well that's because of some IE8 issues. Modern browsers such as Chrome, FireFox and Safari don't care if an object or method is called delete.
+T> But IE8 is so strict when it comes to reserved keywords in JavaScript that IE8 will complain at runtime.
+T> Internally will del execute the same logic as delete has execute since the first ShareCoffee release.
 
 ### Providing REST Properties
 
