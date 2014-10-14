@@ -6,9 +6,9 @@ On the other side, there are Domain Add-Ons. Domain Add-Ons are providing a spec
 
 ## AddOn Development Stack
 
-If you aren’t familiar with the [yeoman](http://yeoman.io) frontend development workflow, you should consider reading the tutorial on it’s website. Yeoman is a productivity boost for every web developer and makes creating new Web-Apps very easy. 
+If you aren’t familiar with the [yeoman](http://yeoman.io) frontend development workflow, you should consider reading the tutorial on it’s website. Yeoman is a productivity boost for every web developer and makes creating new Web-Apps very easy.
 
-![yeoman](images/yeoman.png)
+![yeoman](../images/yeoman.png)
 
 ShareCoffee’s Add-Ons are based on a special yeoman generator. Generators for yeoman are small templates that define how a new project based on this generator will look like. The generator-sharecoffee-addon is responsible for pulling all the development dependencies from the web and installing them on your development machine. Most important to know about yeoman is the fact that it’s based on [Node.JS](http://nodejs.org), so you can create new ShareCoffee Add-Ons from almost every device.
 
@@ -30,8 +30,8 @@ At this point you’re able to start with your new Add-On. So let’s create a n
     #go to your development folder
     #on a Mac this will look like this
 
-    cd ~/dev/ 
-    
+    cd ~/dev/
+
     #on a Windows machine it'll look like this
     cd /c/dev/
 
@@ -41,13 +41,13 @@ At this point you’re able to start with your new Add-On. So let’s create a n
     # now let's use yeoman for scaffolding the entire AddOn by executing
     yo sharecoffee-addon
 
-The generator will be invoked and it’ll ask you a few questions about your new Add-On, it’s important to provide real answers here, because yeoman is heavily using template generators in order to save your time. 
+The generator will be invoked and it’ll ask you a few questions about your new Add-On, it’s important to provide real answers here, because yeoman is heavily using template generators in order to save your time.
 
-![yeoman generator for ShareCoffee AddOns](images/addons/yo_generator.png)
+![yeoman generator for ShareCoffee AddOns](../images/addons/yo_generator.png)
 
 Again it’ll pull down all the project related dependencies and install them in the scope of the current project. You’ll receive the following files and folder structure within the `MyFirstAddOn` folder
 
-![yeoman generator output](images/addons/yo_generator_output.png)
+![yeoman generator output](../images/addons/yo_generator_output.png)
 
 What are all these files and folder? Well, all these files and folders form up an increadible development stack. See this list of folders and their responsibility
 
@@ -76,7 +76,7 @@ There are also a ton of files, which ones should you care about? Check this list
 |readme.txt|When installing your AddOn using NuGet in Visual Studio, this readme will automatically be opened|
 |ShareCoffee.MyFirstAddOn.nuspec|NuGet package specification file|
 
-`Gruntfile.coffee` defines some jobs that can be invoked using `grunt-cli`. See the following list of available commands. 
+`Gruntfile.coffee` defines some jobs that can be invoked using `grunt-cli`. See the following list of available commands.
 
 
 |Command|Action that will be executed|

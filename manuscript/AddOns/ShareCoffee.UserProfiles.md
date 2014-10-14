@@ -2,7 +2,7 @@
 
 ShareCoffee.UserProfiles is the second AddOn provided by the author. In contrast to search queries are UserProfile queries not that complicated, but remembering the REST endpoint urls may be the hardest task when dealing with user profiles using SharePoint's REST API.
 
-As true for all AddOns, you've to explicitly install it either by using **NuGet** or **bower.io**. 
+As true for all AddOns, you've to explicitly install it either by using **NuGet** or **bower.io**.
 
     Install-Package ShareCoffee.UserProfiles
     # or if you're using bower
@@ -13,15 +13,15 @@ Next you've to load all the required script files within your website
 {title="Adding script references",lang=html}
 ~~~~~~
     <!-- for the minified version -->
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee/ShareCoffee.min.js"></script>
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee.UserProfiles/ShareCoffee.UserProfiles.min.js"></script>
 
     <!-- or for the debug version -->
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee/ShareCoffee.js"></script>
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee.UserProfiles/ShareCoffee.UserProfiles.js"></script>
 ~~~~~~
 
@@ -73,7 +73,7 @@ Depending on your environment, you can find useful information about users by qu
 
 {title="read a property by user",lang=javascript}
 ~~~~~~
-    var loadUserProfilePropertyFor = 
+    var loadUserProfilePropertyFor =
         function(accountName, propertyName){
         var p = new ShareCoffee.UserProfileProperties(
             ShareCoffee.Url.GetUserProfileProperty,

@@ -15,7 +15,7 @@ Some of these issues are
   * Provide a robust extension model for hosting scenarios (Office 365)
   * Remove custom code from SharePoint Servers
   * Provide scalable architectures for OnDemand, OnPremise and Hybrid scenarios
- 
+
 
 ## App Isolation
 
@@ -28,18 +28,18 @@ Of course can you create lists on the SharePoint site where you've installed the
 
 As long as your App will only work with SharePoint-Items (SP-Is) within the boundaries of your AppWeb, you don't have to care about permissions. For more information on App Permissions, see the corresponding section in this chapter.
 
-![SharePoint App Isolation (Dedicated Webs for each App Instance)](images/introduction/app_isolation.png)
+![SharePoint App Isolation (Dedicated Webs for each App Instance)](../images/introduction/app_isolation.png)
 
 
 ## App Shapes
 
-SharePoint is offering three different shapes for Apps. 
+SharePoint is offering three different shapes for Apps.
 
   * Immersive Full Page Apps
   * App Parts
   * Custom Actions
 
-![SharePoint App Shapes](images/introduction/app_types.png)
+![SharePoint App Shapes](../images/introduction/app_types.png)
 
 These three shapes are directly visible to your users. Each App can offer various numbers of items from any shape. Let's review each of the shapes.
 
@@ -61,9 +61,9 @@ Like back in the days of SharePoint 2007 or SharePoint 2010 you'll use either CA
 
 ## App Hosting Types
 
-Microsoft is currently offering two different kinds of Hosting for SharePoint Apps. 
+Microsoft is currently offering two different kinds of Hosting for SharePoint Apps.
 
-![SharePoint App Hosting Options](images/introduction/app_hosting_types.png)
+![SharePoint App Hosting Options](../images/introduction/app_hosting_types.png)
 
 ## SharePoint Hosted Apps
 
@@ -80,9 +80,9 @@ Both languages are compiled into the *Good Parts of JavaScript* and again, these
 
 ## Provider Hosted Apps
 
-For serious Apps you'll definitely consider building a Provider-Hosted-App instead of a SharePoint-Hosted App. Provider-Hosted Apps are powered by native web applications, which are integrated into SharePoint. The most important aspect is, that your code will not run on a SharePoint box. As the name implies are you - as a Solution Provider - responsible for hosting your App. It's totally up to you if you're relying on servers sitting in your data center, web servers hosted by your customers or if you bet on Microsoft Azure. 
+For serious Apps you'll definitely consider building a Provider-Hosted-App instead of a SharePoint-Hosted App. Provider-Hosted Apps are powered by native web applications, which are integrated into SharePoint. The most important aspect is, that your code will not run on a SharePoint box. As the name implies are you - as a Solution Provider - responsible for hosting your App. It's totally up to you if you're relying on servers sitting in your data center, web servers hosted by your customers or if you bet on Microsoft Azure.
 
-Visual Studio allows you as a developer to create either an ASP.NET WebForms Application or an ASP.NET MVC Application when building Provider-Hosted Apps for SharePoint. But of course you can use any programming language to do so. If you're familiar with Node.JS or RubyOnRails, you can use any of them to build your App's backend. 
+Visual Studio allows you as a developer to create either an ASP.NET WebForms Application or an ASP.NET MVC Application when building Provider-Hosted Apps for SharePoint. But of course you can use any programming language to do so. If you're familiar with Node.JS or RubyOnRails, you can use any of them to build your App's backend.
 
 I> ## Autohosted Apps
 I> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as third hosting option (When you're still using VS 2013 Update 2), but Authohosted Apps are already deprecated.
@@ -92,14 +92,14 @@ I> Visual Studio and SharePoint Tools are still displaying Autohosted Apps as th
 
 SharePoint 2013 and SharePoint Online are by default using [OAuth 2.0](http://oauth.net/2/) in order to deal with security and authorization. One of the most important aspects of OAuth2.0 is that all the pieces from your App (all the relying parties) have to communicate over HTTPS **without any exception**. As described in OAuth2.0 specs, apps can either request access in behalf of a user (in such a case SharePoint is dealing with both, a UserContext and an AppContext), or Apps can also request access to resources without being controlled by a user (SharePoint is only dealing with an AppContext).
 
-In OAuth2.0 secured scenarios, applications have to request permissions for each and every resource they'd like to **access**. By **accessing** all CRUD operations are ment. (Create|Read|Update|Delete). 
+In OAuth2.0 secured scenarios, applications have to request permissions for each and every resource they'd like to **access**. By **accessing** all CRUD operations are ment. (Create|Read|Update|Delete).
 
-Instead of dealing with user credentials OAuth2.0 relies on Tokens which are exchanged by SharePoint and your app. This reduces the pain of storing passwords and user information inside of your App. Management is another great advantage from using OAuth2.0. SharePoint Administrators are able to revoke access for each and every App in no time. 
+Instead of dealing with user credentials OAuth2.0 relies on Tokens which are exchanged by SharePoint and your app. This reduces the pain of storing passwords and user information inside of your App. Management is another great advantage from using OAuth2.0. SharePoint Administrators are able to revoke access for each and every App in no time.
 
 
 ## App Permissions
 
-As an App Developer you should always try to request as few permissions as possible. Users have only the chance to either provide all the requested permissions during installation time or to reject all requested perissions. There are no further choices available. 
+As an App Developer you should always try to request as few permissions as possible. Users have only the chance to either provide all the requested permissions during installation time or to reject all requested perissions. There are no further choices available.
 
 App Permissions are describing what your App needs to access in order to fill end-user's requirements. When creating a new SharePoint App Project in Visual Studio, you can request permissions from within the **AppManifest.xml** file. Visual Studio 2013 is also providing a Visual Designer for the AppManifest, so you don't have to dig deep in the XML Schema for the AppManifest.
 
@@ -114,7 +114,7 @@ An App Permission is composed of up to three parts
 
 For example let's consider that you're building an App which should use SharePoint's Search engine to pull information from SharePoint. In order to get your App working you've to configure the following permission request using the AppManifest Designer
 
-![Requesting Permissions using Visual Studio 2013](images/introduction/vs2013_premission_request.png)
+![Requesting Permissions using Visual Studio 2013](../images/introduction/vs2013_premission_request.png)
 
 See the following list of all available scopes and their permissions.
 
@@ -167,6 +167,6 @@ The Permission Masks are mapped to SharePoint actions
 
 ## App-Only Permissions
 
-Perhaps you have noticed the **Allow the App to make App-Only calls to SharePoint** checkbox in the picture above. This setting is only working for Provider-Hosted Apps. Consider a WebApplication which is using TimerJobs to calculate things each and every day. Depending on this calculation your App has to update a SharePoint ListItem. In such a scenario no **real User** is actually using your App. In order to successfully    access resources in SharePoint your App has to execute an AppOnly call at this time. 
+Perhaps you have noticed the **Allow the App to make App-Only calls to SharePoint** checkbox in the picture above. This setting is only working for Provider-Hosted Apps. Consider a WebApplication which is using TimerJobs to calculate things each and every day. Depending on this calculation your App has to update a SharePoint ListItem. In such a scenario no **real User** is actually using your App. In order to successfully    access resources in SharePoint your App has to execute an AppOnly call at this time.
 
 It's just a simple checkbox, but it enables you to build even more powerful SharePoint Apps. If you'd like to learn more about App authorization policies in SharePoint 2013, you should read [this MSDN article](http://msdn.microsoft.com/library/fp179892(office.15).aspx)

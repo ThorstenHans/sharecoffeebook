@@ -1,7 +1,7 @@
 #Requirements
 
 In order to complete all the samples listed in this book, you need the following software on your development system
- 
+
   * Visual Studio 2013 Update 3
   * Node.JS installation (only for building custom Add-Ons or contributing to ShareCoffee)
 
@@ -16,5 +16,3 @@ No matter if you're running OnDemand or OnPremises, you must have at least one S
 In order to create such a developer SiteCollection use either **SharePoint's Central Administration** or the **Office 365 Admin Center**.
 
 If you neither own a SharePoint Server nor an Office 365 tenant, you can create a Office 365 developer tenant [right here](http://dev.office.com/build).
-
-

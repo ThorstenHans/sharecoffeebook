@@ -4,7 +4,7 @@ You can download all the exercises from this chapter, see the corresponding link
 
 #Let's build a SearchCenter App
 
-The SearchCenter App will allow users to query for everything indexed by SharePoint's Search engine. During this exercise you'll build a SharePoint-Hosted App, which makes use of ShareCoffee and jQuery. Combined with some easy CSS styling in order to build this entire experience. 
+The SearchCenter App will allow users to query for everything indexed by SharePoint's Search engine. During this exercise you'll build a SharePoint-Hosted App, which makes use of ShareCoffee and jQuery. Combined with some easy CSS styling in order to build this entire experience.
 
 This sample contains common steps in more detail as the following exercises. If you're not familiar with SharePoint App development, this is the best starting point for you.
 
@@ -23,7 +23,7 @@ In order to install all the required dependencies **Right-Click** your SharePoin
 
 Once these packages were installed, your project's structure will look like the following.
 
-![SearchCenter App's project structure](images/exercises/searchapp_structure.png)
+![SearchCenter App's project structure](../images/exercises/searchapp_structure.png)
 
 
 ## App Permissions
@@ -57,37 +57,37 @@ I> CSS loading order
 I> Ensure that your App.css is referenced after Bootstrap's CSS this is important for overriding bootstrap's styles as shown later in this section.
 
 
-Remove the content from 
+Remove the content from
 `<asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">` `</asp:Content>` node.
- 
+
 Add the following HTML at this point
 
-<<[default.aspx code](code/exercises/searchcenter/default.html)
+<<[default.aspx code](../code/exercises/searchcenter/default.html)
 
 
 ## The Script
 
 From the script's folder open the **App.js** file, delete it's content. Create a new JavaScript constructor function for encapsulating SharePoint's Search Service and re-use it from the click-handler
 
-<<[app.js code](code/exercises/searchcenter/app.js)
- 
+<<[app.js code](../code/exercises/searchcenter/app.js)
+
 
 
 ## The Styling
 
 Bootstrap is already providing some great styling for our App, but we've to add some small tweaks in order to polish it when using SharePoint's MasterPage. Open the **App.css* file from the **Content** folder and delete it's content. Add the following lines of custom css for overriding bootstrap's css styles.
 
-<<[app.css stylesheets](code/exercises/searchcenter/app.css)
+<<[app.css stylesheets](../code/exercises/searchcenter/app.css)
 
 ## Run the App
 
 Once you've completed all the coding, hit **F5** and Visual Studio will build / package / upload your App. As for every App you'll install on your tenant, SharePoint will first ask you to trust this App by presenting the following dialog
 
-![SharePoint App Trust Dialog](images/exercises/trust_question.png)
+![SharePoint App Trust Dialog](../images/exercises/trust_question.png)
 
-After trusting the App, you'll be redirected to your SearchCenter App where you can search for any term you're interested in. 
+After trusting the App, you'll be redirected to your SearchCenter App where you can search for any term you're interested in.
 
-![SearchCenter App](images/exercises/searchcenter_app.png)
+![SearchCenter App](../images/exercises/searchcenter_app.png)
 
 ## Download the Source
 

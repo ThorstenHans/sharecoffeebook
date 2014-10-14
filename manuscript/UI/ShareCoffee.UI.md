@@ -28,7 +28,7 @@ Providing a proper configuration (or options object) to the `loadAppChrome` meth
 
 The entire configuration for the AppChrome is done by using ShareCoffee's model classes `SettingsLink` and `ChromeSettings`.
 
-<<[AppChrome Sample](code/ui/app_chrome.js)
+<<[AppChrome Sample](../code/ui/app_chrome.js)
 
 
 ## SharePoint Notifications
@@ -65,7 +65,7 @@ Assume the code from the sample above, you've stored the identifier of the secon
 
 ### Notifications Sample
 
-![ShareCoffee Notifications Sample App](images/sharecoffee_ui/sharecoffee_notifications.png)
+![ShareCoffee Notifications Sample App](../images/sharecoffee_ui/sharecoffee_notifications.png)
 
 You can also download the entire sample code from above [here](http://1drv.ms/1BU2gvy).
 
@@ -126,7 +126,6 @@ There are scenarios when you'd like to clean all existing status messages from t
 
 ### Status Messages Sample
 
-![ShareCoffee Status Messages Sample App](images/sharecoffee_ui/sharecoffee_statusmessages.png)
+![ShareCoffee Status Messages Sample App](../images/sharecoffee_ui/sharecoffee_statusmessages.png)
 
 All the sources for using ShareCoffee's status API are also available for download [here](http://1drv.ms/1BU2xyK)
-

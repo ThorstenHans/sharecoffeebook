@@ -2,7 +2,7 @@
 
 Before actually digging into the framework itself, we should talk about some background and common information about ShareCoffee.
 
-![ShareCoffee](images/ShareCoffee_small.png)
+![ShareCoffee](../images/ShareCoffee_small.png)
 ## License
 
 ShareCoffee is licensed under MIT which means you can use ShareCoffee for your personal projects. For professional developers or companies this is also perfect, because they can easily use ShareCoffee to get customer projects done or build new products powered by ShareCoffee, without having the fear to violate any license terms.
@@ -42,7 +42,7 @@ In general ShareCoffee is providing features for five main parts of SharePoint A
 
 Most efforts have been invested in providing a great API for dealing with REST requests in SharePoint Apps. CrossDomain offers almost the same functionality but is dedicated to Provider-Hosted App scenarios. Third powerful part of ShareCoffee is UI functionality, the namespace provides for example a single method to load the entire AppChromeBar into your SharePoint App, which is mandatory in order to submit your SharePoint App to the SharePoint Store. There are also a few other UI helper methods included inside of the UI namespace which will be covered in the upcoming chapters.
 
-![ShareCoffee Architecture](images/about_sharecoffee/architecture.png)
+![ShareCoffee Architecture](../images/about_sharecoffee/architecture.png)
 
 For CSOM, ShareCoffee is only providing a few helper methods which are abstracting common functionalities, in order to write CSOM logic even faster and have an API which is good to remember.
 
@@ -60,7 +60,7 @@ The development stack is totally platform independent. No matter if you're using
 
 There is only a single dependency that you need on your ShareCoffee development system installed - [Node.JS](http://nodejs.org). Everything else will be installed automatically using NodeJS' package manager [npm](http://npmjs.org)
 
-![NodeJS](images/nodejs.png)
+![NodeJS](../images/nodejs.png)
 
 ShareCoffee has been written using TDD (Test Driven Development) which means that for each and every line of productive code, there is at least a single UnitTest which is responsible for describing and validating the expected result from that bit of code.
 
@@ -68,11 +68,11 @@ If you're interested in contributing to ShareCoffee itself, feel free to fork th
 
 It's also a good idea to dig into [CoffeeScript](http://coffeescript.org).
 
-![CoffeeScript](images/coffeescript.png)
+![CoffeeScript](../images/coffeescript.png)
 
-There is some automation build into ShareCoffee, as for any JavaScript framework in this decade, I've used a JavaScript task-runner. In my case I've chosen [GruntJS](http://gruntjs.com) for automating all the stuff I need. 
+There is some automation build into ShareCoffee, as for any JavaScript framework in this decade, I've used a JavaScript task-runner. In my case I've chosen [GruntJS](http://gruntjs.com) for automating all the stuff I need.
 
-![GruntJS](images/gruntjs.png)
+![GruntJS](../images/gruntjs.png)
 
 Some of the automation steps that are used in ShareCoffee are
 
@@ -93,9 +93,9 @@ W> Therefore it's important that you generate the NuGet Packages on a Windows Ma
 
 As mentioned earlier, ShareCoffee is hosted on github. When it comes to collaboration based on development projects, github is awesome.
 
-![github](images/github.png)
+![github](../images/github.png)
 
 That's the reason why I've decided to use github not only for hosting the code. Also all the feature requests, bugs, questions from other developers where housed within ShareCoffee's repository. If you have any kind of question / bug / feature request for ShareCoffee
 [visit the repositories issue list](https://github.com/ShareCoffee/ShareCoffee/issues) and use github issues to collaborate with me or with other ShareCoffee users out there.
 
-![Use gitub's issue list for bugs or feature requests](images/about_sharecoffee/github_issues.png)
+![Use gitub's issue list for bugs or feature requests](../images/about_sharecoffee/github_issues.png)

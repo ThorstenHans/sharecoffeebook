@@ -1,10 +1,10 @@
 # ShareCoffee.Search
 
-SharePoint Search may be a beast. It's API is very powerful and allows you to build queries that match 100% to your (or your customer's) demand. Also Search's REST API is offering a ton of parameters which could be specified. Remembering all these parameters with it's casing is a kind of impossible. And because also the casing is very important, ShareCoffee.Search is assisting in exactly this area. 
+SharePoint Search may be a beast. It's API is very powerful and allows you to build queries that match 100% to your (or your customer's) demand. Also Search's REST API is offering a ton of parameters which could be specified. Remembering all these parameters with it's casing is a kind of impossible. And because also the casing is very important, ShareCoffee.Search is assisting in exactly this area.
 
 It's not only providing a Search Configuration Object (which cares internally about casing properties in the way SharePoint required them), not it's also providing a simple object which provides all the Search endpoint urls for you.
 
-As true for all AddOns, you've to explicitly install it either by using **NuGet** or **bower.io**. 
+As true for all AddOns, you've to explicitly install it either by using **NuGet** or **bower.io**.
 
     Install-Package ShareCoffee.Search
     # or if you're using bower
@@ -15,15 +15,15 @@ Next you've to load all the required script files within your website
 {title="Adding Script references",lang=html}
 ~~~~~~
     <!-- for the minified version -->
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee/ShareCoffee.min.js"></script>
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.min.js"></script>
 
     <!-- or for the debug version -->
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee/ShareCoffee.js"></script>
-    <script type='text/javascript' 
+    <script type='text/javascript'
             src="../Scripts/ShareCoffee.Search/ShareCoffee.Search.js"></script>
 ~~~~~~
 
@@ -48,12 +48,12 @@ Creating a Query using ShareCoffee.Search is nothing special. Depending on your 
     properties.queryText = "Office 365";
     properties.rowLimit = 100;
     properties.startRow = 50;
-    
+
     // either set on properties Object or use jQuery's API chain
     properties.onSuccess = function(data){
        // handle search results
     };
- 
+
     $.ajax(ShareCoffee.REST.Search.build.read.for.jQuery(properties))
     .done(properties.onSuccess)
     .fail(function(error){
@@ -69,11 +69,11 @@ Executing a PostQurey means you must use an instance of **PostQueryProperties**.
 {title="Execute a PostQuery using ShareCoffee.Search",lang=javascript}
 ~~~~~~
     //load SharePoint's CrossDomain Library
-    $s.CrossDomain.loadCrossDomainLibrary(onCrossDomainLibLoaded, 
+    $s.CrossDomain.loadCrossDomainLibrary(onCrossDomainLibLoaded,
       function(){
         console.log("Error loading CrossDomain lib")  
     });
- 
+
     var onCrossDomainLibLoaded = function(){
       var p = new ShareCoffee.PostQueryProperties();
       p.Querytext = 'Office 365';
@@ -102,7 +102,7 @@ Last search operation that can be executed using SharePoint's REST API is a sugg
 ~~~~~~
     var p = new ShareCoffee.SuggestProperties("SharePoint");
     p.showpeoplenamesuggestions = true;
- 
+
     $.ajax(ShareCoffee.REST.build.read.for.jQuery(p))
     .done(function(data){
       // handle data  
