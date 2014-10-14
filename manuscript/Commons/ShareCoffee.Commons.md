@@ -84,3 +84,39 @@ Instead of writing each and every time `ShareCoffee.` you can also use the `$s.`
 
     var queryString = $s.Commons.getQueryString();
     console.log(queryString);
+
+## Commons.infect()
+
+Infect is a new feature that has been released with ShareCoffee 0.1.3. Infect is responsible for appending `SPHostUrl` as a query-string parameter to all available `a` tags. You may have seen `spcontext.js` when building Provider Hosted Apps. This is actually what `spcontext.js` is doing. But Microsoft's default implementation is missing one thing. It works great for simple links, but if you're building a real app - no matter if you're using ASP.NET WebForms, MVC or something else - you also use `form` tags in your app in order to submit data back to the server. Once you submit such a form to your website, you've also to carry all the required things aroung using the querystring in order to get SharePoint Context working on result-pages.
+
+Microsoft's `spcontext.js` is missing those `form` tags. `ShareCoffee.Commons.infect()` will go through the entire page and append the `SPHostUrl` to the following node-attribute combinations
+
+  * href attribute on all `a` nodes
+  * action attribute of all `form` nodes
+
+If you're using `ShareCoffee.Commons.infect()` you can safely delete `spcontext.js` from your Provider-Hosted App Project
+
+
+## Commons.infect(htmlElement)
+
+See the section about `Commons.infect()` if you don't know what `infect` is actually doing.
+
+When building SharePoint-Hosted Apps using plain HTML pages you may see the same isse with links and form tags as described in the previous section, but executing `ShareCoffee.Commons.infect()` without passing a `HTMLElement` as parameter will result in altering all the links on the entire site currently rendered in SharePoint, including links provided by the SharePoint chrome or the MasterPage.
+Insted of altering those elements, you can limit `infect` to any `HTMLElement` instance.
+
+Let's say you've built a SharePoint Hosted App which has a div container which holds the entire App contents
+
+{title="CommonsInfectSamplePage.html",lang=html}
+~~~~~~
+<div id="app-container">
+  <!-- ... -->
+</div>
+~~~~~~
+
+Applying infect only to elements within that div will look like the following:
+
+{title="InfectOnlyTheApp.js",lang=js}
+~~~~~~
+var container = document.getElementById("app-container");
+ShareCoffee.Commons.infect(container);
+~~~~~~

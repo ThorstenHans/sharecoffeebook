@@ -43,6 +43,9 @@ which are reflecting the famous CRUD operations.
     ShareCoffee.REST.build.read
     ShareCoffee.REST.build.update
     ShareCoffee.REST.build.delete
+    ShareCoffee.REST.build.del
+
+`del` is actually an alternative name which is internally executing the same logic as `delete`. This object has been introduced with ShareCoffee 0.1.4 because `delete` is treated as a reserved keyword in JavaScript. Modern browsers like FireFox, Chrome or Safari don't care about using a object called `delete`, but IE does. At least IE8 does. In order to support also useres with IE8, ShareCoffee is now offering this alternative approach for deleting data from SharePoint.
 
 
 In order to support all the following JavaScript frameworks
@@ -58,18 +61,22 @@ You've to specify which framework you're currently using, prefixed by the `for` 
     ShareCoffee.REST.build.read.for.angularJS();
     ShareCoffee.REST.build.update.for.angularJS();
     ShareCoffee.REST.build.delete.for.angularJS();
+    ShareCoffee.REST.build.del.for.angularJS();
+
 
     // jQuery samples
     ShareCoffee.REST.build.create.for.jQuery();
     ShareCoffee.REST.build.read.for.jQuery();
     ShareCoffee.REST.build.update.for.jQuery();
     ShareCoffee.REST.build.delete.for.jQuery();
+    ShareCoffee.REST.build.del.for.jQuery();
 
     // reqwest samples
     ShareCoffee.REST.build.create.for.reqwest();
     ShareCoffee.REST.build.read.for.reqwest();
     ShareCoffee.REST.build.update.for.reqwest();
     ShareCoffee.REST.build.delete.for.reqwest();
+    ShareCoffee.REST.build.del.for.reqwest();
 
 T> ## IE 8 workaround
 T> IE8 is supported by SharePoint 2013 OnPremise, if you're targeting this browser, you've to replace the **for** property by the **f** shorthand.
@@ -231,6 +238,14 @@ T> When accessing resources from the HostWeb, you've to explicitly request permi
       url: "web/lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')",
       hostWebUrl: ShareCoffee.Commons.getHostWebUrl()
     })).done(onSuccess).fail(onError);
+
+    // or using the alternative del method
+
+    $.ajax(ShareCoffee.REST.build.del.for.jQuery({
+      url: "web/lists/GetById('581aecc9-b365-46f0-83bd-6e002d96d7ce')",
+      hostWebUrl: ShareCoffee.Commons.getHostWebUrl()
+    })).done(onSuccess).fail(onError);
+
 
 
 As you can see, you don't have to make many changes in order to move queries targeting the AppWeb to the HostWeb. This is a huge advantage of ShareCoffee. In real customer driven projects it's not uncommon that you've to make exactly this change during development time. Lists which are hosted on the AppWeb provide less functionality as "traditional" lists (which are located on HostWebs).

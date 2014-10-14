@@ -84,9 +84,8 @@ Some of the automation steps that are used in ShareCoffee are
   * Building the NuGet Package
 
 W> ## NuGet Package Generation
-W> The NuGet Packaging Tool is currently only available on Windows systems. There is
-W> a Mono port from <thead></thead> NuGet command line tool, but it's not working as expected if you pipe various arguments to the command line interface
-W> Therefore it's important that you generate the NuGet Packages on a Windows Machine!
+W> Nuget Packaging works on all plattforms when using ShareCoffee Version 0.1.2 or later.
+W> If you're using an older ShareCoffee Version, you should either update the package or you can use a Windows machine in order to build the NuGet Package manually.
 
 
 ## Bugs / Feature Requests

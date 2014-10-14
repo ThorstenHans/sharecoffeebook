@@ -1,6 +1,7 @@
 Introduction/AboutTheAuthor.md
 Introduction/Requirements.md
 Introduction/WhoShouldReadThisBook.md
+Introduction/BookUpdates.md
 Introduction/GeneralIntroduction.md
 About/AboutShareCoffee.md
 GettingStarted/GettingStarted.md
