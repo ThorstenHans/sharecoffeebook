@@ -28,7 +28,7 @@ Of course can you create lists on the SharePoint site where you've installed the
 
 As long as your App will only work with SharePoint-Items (SP-Is) within the boundaries of your AppWeb, you don't have to care about permissions. For more information on App Permissions, see the corresponding section in this chapter.
 
-![SharePoint App Isolation (Dedicated Webs for each App Instance)](../images/introduction/app_isolation.png)
+![SharePoint App Isolation (Dedicated Webs for each App Instance)](images/introduction/app_isolation.png)
 
 
 ## App Shapes
@@ -39,7 +39,7 @@ SharePoint is offering three different shapes for Apps.
   * App Parts
   * Custom Actions
 
-![SharePoint App Shapes](../images/introduction/app_types.png)
+![SharePoint App Shapes](images/introduction/app_types.png)
 
 These three shapes are directly visible to your users. Each App can offer various numbers of items from any shape. Let's review each of the shapes.
 
@@ -63,7 +63,7 @@ Like back in the days of SharePoint 2007 or SharePoint 2010 you'll use either CA
 
 Microsoft is currently offering two different kinds of Hosting for SharePoint Apps.
 
-![SharePoint App Hosting Options](../images/introduction/app_hosting_types.png)
+![SharePoint App Hosting Options](images/introduction/app_hosting_types.png)
 
 ## SharePoint Hosted Apps
 
@@ -114,7 +114,7 @@ An App Permission is composed of up to three parts
 
 For example let's consider that you're building an App which should use SharePoint's Search engine to pull information from SharePoint. In order to get your App working you've to configure the following permission request using the AppManifest Designer
 
-![Requesting Permissions using Visual Studio 2013](../images/introduction/vs2013_premission_request.png)
+![Requesting Permissions using Visual Studio 2013](images/introduction/vs2013_premission_request.png)
 
 See the following list of all available scopes and their permissions.
 

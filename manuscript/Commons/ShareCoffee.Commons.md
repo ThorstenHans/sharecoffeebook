@@ -16,7 +16,7 @@ Internally this method is taking care of all the context. first it's checking if
 
 But there are scenarios when you as a developer are going to store the AppWeb url in your own storage and you'd like to read it from there. Therefor is ShareCoffee exposing an injection point where you can either provide directly a string or a method which will be invoked. Once you set one of both, it's only executing your logic and ignoring all the other stuff.
 
-<<[AppWebUrl Usage](../code/commons/appweburl.js)
+<<[AppWebUrl Usage](code/commons/appweburl.js)
 
 ##Commons.getHostWebUrl()
 
@@ -26,7 +26,7 @@ But there are scenarios when you as a developer are going to store the AppWeb ur
 
 As the same for `getAppWebUrl()` you can inject either a string or a custom function for querying the HostWeb url by assigning it to `loadHostWebUrlFrom` as shown below
 
-<<[HostWebUrl Usage](../code/commons/hostweburl.js)
+<<[HostWebUrl Usage](code/commons/hostweburl.js)
 
 ##Commons.getApiRootUrl()
 

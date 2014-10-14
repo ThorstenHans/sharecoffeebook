@@ -13,12 +13,12 @@ I> Numerous JavaScript frameworks are offering AJAX wrappers in order to take aw
 
 In order to get started, let’s assume take a simple HTTP-GET sample, which will read some list-metadata from the HostWeb. The upcoming code snippets will show how to build exactly the same request. The first snippet demonstrates how to read this information using plain jQuery.
 
-<<[Get List-Metadata with jQuery only](../code/rest/jquery.js)
+<<[Get List-Metadata with jQuery only](code/rest/jquery.js)
 
 It’s important to specify all those properties when using SharePoint’s REST API. Ignoring one of the properties may result in an internal server error instead of returning the data you’re interested in.
 Now let’s review the same request but instead of using plain jQuery, ShareCoffee is utilized to take away most of the work from you.
 
-<<[Get List-Metadata with ShareCoffee and jQuery](../code/rest/jquery-sharecoffee.js)
+<<[Get List-Metadata with ShareCoffee and jQuery](code/rest/jquery-sharecoffee.js)
 
 ShareCoffee is **NOT** another AJAX wrapper. It is more a factory which is responsible for configuring REST requests that perfectly fit in all situations. That means in detail that ShareCoffee is responsible for providing all the HTTP-Headers required for the request you’d like to execute.
 

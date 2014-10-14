@@ -103,7 +103,7 @@ Once the App has been created, again install the dependencies using NuGet Packag
 
 Right-Click the App Projekt from the SolutionExplorer and select **Add Item** from the ContextMenu. From the dialog choose **List** and provide **Tasks** as the name. And use the following list settings:
 
-![List Settings](../images/exercises/TasksAppAppWeb/list_settings.png)
+![List Settings](images/exercises/TasksAppAppWeb/list_settings.png)
 
 ## Coding the App
 
@@ -118,29 +118,29 @@ Again the App will again be built from three core components
 
 In order to get everything working you've again to add references to all the stylesheets and script files
 
-<<[Default.aspx code](../code/exercises/taskappappweb/default_refs.html)
+<<[Default.aspx code](code/exercises/taskappappweb/default_refs.html)
 
 The UI is again straight forward. Use this HTML inside of the **PlaceHolderMain** Content Control
 
-<<[Default.aspx code](../code/exercises/taskappappweb/default.html)
+<<[Default.aspx code](code/exercises/taskappappweb/default.html)
 
 ### The App Script
 
 Open the App.js file from the scripts folder and replace it's content with the following source.
 
-<<[App.js code](../code/exercises/taskappappweb/app.js)
+<<[App.js code](code/exercises/taskappappweb/app.js)
 
 ### The App Styles
 
 Again, to fix some style bugs insert the following stylesheets in App.css (which is located in your Apps content directory).
 
-<<[App.css stylesheets](../code/exercises/taskappappweb/app.css)
+<<[App.css stylesheets](code/exercises/taskappappweb/app.css)
 
 ### Executing the App
 
 When executing the App, it should render your TaskManagement App like the following:
 
-![AppWeb TaskManagement App](../images/exercises/TasksAppAppWeb/final_app.png)
+![AppWeb TaskManagement App](images/exercises/TasksAppAppWeb/final_app.png)
 
 ### Download the Source
 
@@ -171,7 +171,7 @@ In order to access the data from the HostWeb, your App must request manage permi
 
 In order to minimize the coding efforts for this exercise, this App will make use of an existing Task list called **Tasks** if there is a Task-List called Tasks on your HostWeb, you're fine, if not, go and create one right now. The list can of course be created using either JavaScript Object Model (JSOM) or SharePoint's REST interface, but that would blow-up the sample too much.
 
-![App Permissions](../images/exercises/TasksAppHostWeb/app_permissions.png)
+![App Permissions](images/exercises/TasksAppHostWeb/app_permissions.png)
 
 ## Coding the App
 
@@ -186,33 +186,33 @@ Again the App will again be built from three core components
 
 In order to get everything working you've again to add references to all the stylesheets and script files
 
-<<[Default.aspx code](../code/exercises/taskapphostweb/default_refs.html)
+<<[Default.aspx code](code/exercises/taskapphostweb/default_refs.html)
 
 The UI is again straight forward. Use this HTML inside of the **PlaceHolderMain** Content Control
 
-<<[Default.aspx code](../code/exercises/taskapphostweb/default.html)
+<<[Default.aspx code](code/exercises/taskapphostweb/default.html)
 
 ### The App Script
 
 Open the App.js file from the scripts folder and replace it's content with the following source.
 
-<<[App.js code](../code/exercises/taskapphostweb/app.js)
+<<[App.js code](code/exercises/taskapphostweb/app.js)
 
 ### The App Styles
 
 Again, to fix some style bugs insert the following stylesheets in App.css (which is located in your Apps content directory).
 
-<<[App.css stylesheets](../code/exercises/taskapphostweb/app.css)
+<<[App.css stylesheets](code/exercises/taskapphostweb/app.css)
 
 ### Executing the App
 
 When executing the App, it will ask you if you trust the TaskManagement App. In this dialog, it's important **to choose the Task-List (Tasks) from the shown dropdown**.
 
-![HostWeb TaskManagement App Trust](../images/exercises/TasksAppHostWeb/app_trust_dialog.png)
+![HostWeb TaskManagement App Trust](images/exercises/TasksAppHostWeb/app_trust_dialog.png)
 
 If you've trusted the App, you'll be forwarded to your Task-Management App which will look like this:
 
-![HostWeb TaskManagement App](../images/exercises/TasksAppHostWeb/final_app.png)
+![HostWeb TaskManagement App](images/exercises/TasksAppHostWeb/final_app.png)
 
 ## Download the Source
 

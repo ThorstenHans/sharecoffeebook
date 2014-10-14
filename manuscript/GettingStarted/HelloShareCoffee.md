@@ -10,7 +10,7 @@ There isn't a better way to get started with a framework as actually using it.
   * Provide **HelloShareCoffee** as name and hit **OK**
   * In **SharePoint App wizard** provide your **Developer-Site's url**
 
-![SharePoint App Wizard in Visual Studio 2013](../images/GettingStarted/app_wizard.png)
+![SharePoint App Wizard in Visual Studio 2013](images/GettingStarted/app_wizard.png)
 
 T> ## SharePoint App Hosting Options
 T> All the different hosting options were discussed in Chapter One, if you're not using the recent VS 2013 Update (Update 3) you may see the term Autohosted App right here. Autohosted Apps are depricated, so currently there are only two real options.
@@ -20,7 +20,7 @@ For this sample lets choose **SharePoint-Hosted** as type of the App and click *
 
 Open the **Package Manager Console** by focusing the VS2013's new **Quick Launch** and start typing **Package Manager Console**. From the list of results select **View -> Other Windows -> Package Manager Console**
 
-![Visual Studio 2013's Quick Launch](../images/GettingStarted/quicklaunch.png)
+![Visual Studio 2013's Quick Launch](images/GettingStarted/quicklaunch.png)
 
 In the Package Manage console type
 
@@ -85,4 +85,4 @@ The script is really straight forward. It's piping the result values from ShareC
 
  Your default browser should now popup and load your App's start-page. If you've followed all the steps described above, your browser should present something similar to this
 
- ![Sample 1 Result](../images/GettingStarted/sample1_result.png)
+ ![Sample 1 Result](images/GettingStarted/sample1_result.png)
