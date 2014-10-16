@@ -12,3 +12,8 @@ See the following sections that has changed.
   * Added documentation for IE8 fix. REST Factory now exposes del as alternative for delete
   * Nuget Packaging works now for OSX and Linux. Applied corrections to introduction
   * Added Book Updates section
+
+
+## November 2014 changes
+
+  * refactored exercises to provide more consistent naming (addTask, updateTask,...)

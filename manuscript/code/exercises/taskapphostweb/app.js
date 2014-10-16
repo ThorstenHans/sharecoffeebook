@@ -27,7 +27,7 @@ angular.module('ShareCoffeeTaskListApp')
           });
           return $http(properties).success(onTaskAdded).error(onError);
         },
-        toggleTask: function(task, onTaskToggled, onError) {
+        updateTask: function(task, onTaskUpdated, onError) {
           var properties, updateTask;
           updateTask = {
             '__metadata': {
@@ -38,10 +38,10 @@ angular.module('ShareCoffeeTaskListApp')
           };
           properties = ShareCoffee.REST.build.update["for"].angularJS({
             url: "web/lists/GetByTitle('Tasks')/items/GetById(" + task.Id + ")",
-            hostWebUrl: ShareCoffee.Commons.getHostWebUrl(), 
+            hostWebUrl: ShareCoffee.Commons.getHostWebUrl(),
             payload: updateTask
           });
-          return $http(properties).success(onTaskToggled).error(onError);
+          return $http(properties).success(onTaskUpdated).error(onError);
         }
       };
     }
@@ -53,6 +53,7 @@ angular.module('ShareCoffeeTaskListApp')
       $scope.newTask = 'Add another task ...';
       $scope.reverse = true;
       $scope.filterTerm = '';
+
       $scope.init = function() {
         var onTasksLoaded;
         onTasksLoaded = function(data) {
@@ -60,6 +61,7 @@ angular.module('ShareCoffeeTaskListApp')
         };
         return taskListService.loadTasks(onTasksLoaded);
       };
+
       $scope.addTask = function() {
         var onTaskAdded;
         onTaskAdded = function(data) {
@@ -68,9 +70,10 @@ angular.module('ShareCoffeeTaskListApp')
         };
         return taskListService.addTask($scope.newTask, onTaskAdded);
       };
-      $scope.toggle = function(task) {
-        var onError, onTaskToggled;
-        onTaskToggled = function(data) {
+
+      $scope.updateTask = function(task) {
+        var onError, onTaskUpdated;
+        onTaskUpdated = function(data) {
           return console.log(data);
         };
         onError = function(data) {
@@ -83,7 +86,7 @@ angular.module('ShareCoffeeTaskListApp')
           task.Status = 'Completed';
           task.PercentComplete = 1;
         }
-        return taskListService.toggleTask(task, onTaskToggled, onError);
+        return taskListService.updateTask(task, onTaskUpdated, onError);
       };
       return $scope.init();
     }
